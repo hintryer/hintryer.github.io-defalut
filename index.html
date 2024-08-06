@@ -1,24 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
 <style>
-/*--预设--*/ 
-body { padding:0px;margin: 0px; } 
-#lyrow, #lyrow input, #lyrow textarea { font-size:12px;font-family: 'Microsoft YaHei', '微软雅黑', MicrosoftJhengHei, '华文细黑', STHeiti, MingLiu; } 
-#lyrow { height:100vh;width: 100vw; } 
-#lyrow div { min-height: 18px;  } 
-#lyrow input, #lyrow textarea { border:rgb(235, 235, 235) 1px solid;border-radius: 3px;padding: 5px 8px;outline: 0; } 
-#lyrow input:hover, #lyrow textarea:hover { border: 1px solid #6bc1f2; } 
-/*--编辑--*/ 
-
+body {
+	background-color:#d0e4fe;
+}
+h1 {
+	color:orange;
+	text-align:center;
+}
+p {
+	font-family:"Times New Roman";
+	font-size:20px;
+}
+	.wrap {
+      overflow: hidden;
+      width: 100%;
+      padding: 20px;
+      background-color: goldenrod;
+      margin-bottom: 20px;
+    }
+    .wrap .card {
+      float: left;
+      width: 200px;
+      height: 100px;
+      padding: 8px;
+      background: #FFFFFF;
+      border-radius: 4px;
+      /* 每5个一行，每个间隔(100%-卡片宽度*5)/4 */
+      margin-right: calc(25% - 250px);
+    }
+    .wrap .card:nth-of-type(5n) {
+      /* 每行第5个不需要列间隔 */
+      margin-right: 0;
+      /* 每行第5个设置行间隔=>不足5个即为最后一行，不需要行间隔 */
+      margin-bottom: 20px;
+    }
+    .wrap .card:last-of-type {
+      /* 最后1个不需要行间隔=>防止最后一行正好有5个 */
+      margin-bottom: 0;
+    }
 </style>
-<!--下载font-awesome.css图标包-->
-<!--https://www.58html.com/html/template/font-awesome.zip-->
-<link rel="stylesheet" href="https://www.58html.com/gui/css/font-awesome/css/font-awesome.css">
-<div id="lyrow">
+</head>
 
-        
-    <a >超链接</a>
-    <span >标签</span>
-    <i class="fas fa-photo-video" data-font="fas fa-photo-video"></i>
-<video  src="/folder/css/movie.ogg" preload="preload" controls="controls"></video>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAXNSR0IArs4c6QAABTBJREFUeF7tnet24kAMg+H9H7p7emA5YZJRPrkeKLvqXyZzsWxZ9gR6vVwuX5eFf19f8+mv1+tjZTVu3N72OWfr2zXUHHTPztp07LdFAshgrQDy7RUikv7bCHGMokJQURGlG7qXcT7q3dVxVZql9nqiLGqEMz4MIGcWev58a68AcmA76lArHDiAfBIgVb7v5lmVJxz5Ss+zxWiMAho9irTUnDJC6AGcTXvsehsdQO5WCyB7Of5PR0j1cB0VN61tnOjvcOC3UlYA2VNyADmh50QIyF+hrBNp5HjRdirKuePy1baHWpsWeVWapVL611CWI4cDSCLkYYG3RojjtTM6qNJZdW1KS06FT89W3fOvaS5S3u446PccHWKguy00diLe2lwMIGYd0uGZoaxzK04p6/xRfwQFxGkgKurp/kzt37fG+RMvf8lhxsEB5E5fr37rJIDoKLl+rc6sw/odgJwHft+IF5vnEkDMorcP6uOZAkgAOX591Enqq71UNQJXr12OkI5ObbV9UW2P0EpdAbJ8z9WkHkD2sUIFgGSDAKJJyCkMWwBRdUglxJ0mHqUGetDRtA69zMbSTsPYJBz3Qm0pK3U6SXXxALKPzgByt8nHRYhDB4qVZ1H3aq5We6RUp5KzI49xt5feXTuLB5ADmtp8tQ9TViLkZgHa3necNBFyYq23Uta2DqEbOYuWFV40q84dSUzvw7vsMFORav6n1knXRgKIruIDyIG0rQqWjudaAKFSdqxYqZx1DtoRgR2S1elQ0/NhygogWq7+RIE9qSya1ANIAHlYoIsaZkpt9G5aQ3TtC9chdGPjOCpFqzKUNj1p/nIAUXumn8m2zYrXgAKI/rJoADmQvSuiuiVCVFKn8tK5zp1FjzPHrAKuSm6lkGi0n62t8tfTZwHkZg7ahZZ0A3+QrVwYJkLqv+NFC8ERYFkYBpBfDAgN1WrF6rQyqFzeeZ+gFJrDqk5KIwZHSADRuabqiKMYCCBAEs9U3ZJKXb0oR+9H6DiHQqhMVJFblaxdc87mkUAGkJvZKjlEAVem+AASQB7OQ9US9d7RKz+Ssjre7V19cEcSU6pw9rw6n+H2e7XNTY1Ck2cAuVsqgOxdZgV9Tq9wHVlKN7aaGtQlVMfa1TkcBRZATqxFxYZjdErj8juGHRcuVQ+rRmCHMTvmcMBKhHxqhNAwc/Q/9b6O6KQqTlXqToTTFlK5dRJA6vchykkDyIFn0VeEXh4h9DUgegCHvqoVMDVStaCkgsKhRHXWp3ovgPQVf9uZ6A3h9zMBxFBZjnxtAaT6Sw7VjXaoLEp11Sqe7nFFZ6P84zMBRFNdNecGkAPPSoT8wCi0GBuLP5p0qaI7m58qt4/8VVKaPBXHU8p18hCNLAVOADlBJoDcDfTOyzEVgbTHRilxF8XbwtDhS9rncjxsJmc75qAUVe00jDlEzSN7WQFEQ+U4KRUYAaQaHo3/VlxR8LR14nhDKMvrgbUAQrWzw/FUGq5oj9Dz/CCgHo8uSer0AAFkD2EAuduEytKOKFBzfAwgHdKWGt1p8FXyp3MBhhWYkr0rKCuAaHr7Nf9YsisP0ej5SQH499lEiJknQlnAYJSylOylCdMBhCb5Sq7Z9as23wa2elnvzCEB5KBNEEC8+oJGGb4P6QjHsetZnbNS0Z+tjaWnoBRae8gGYpWyKOKKIwPIzTr0fufl/wuXgpwIMVvNyrBVY1YUmBOdH0dZ1HudcVWJqlQW5XEHrMp6jqwutd8dQ9OxAeQ8h0wvqKiRnXEBxAPkD4U2ATQjvFCcAAAAAElFTkSuQmCC" data-text="{width:100,text:'https://www.58html.com'}" class="qrcode">
-    <a >超链接</a>
-</div>
+<body>
+
+<h1>CSS 实例!</h1>
+<p>这是一个段落。</p>
+  <p>多行 最后一行不满5个</p>
+  <div class="wrap">
+    <div class="card">1</div>
+    <div class="card">2</div>
+    <div class="card">3</div>
+    <div class="card">4</div>
+    <div class="card">5</div>
+    <div class="card">6</div>
+    <div class="card">7</div>
+  </div>
+</body>
+</html>
