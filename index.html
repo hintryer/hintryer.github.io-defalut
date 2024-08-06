@@ -15,33 +15,20 @@ p {
 	font-family:"Times New Roman";
 	font-size:20px;
 }
-	.wrap {
-      overflow: hidden;
-      width: 100%;
-      padding: 20px;
-      background-color: goldenrod;
-      margin-bottom: 20px;
-    }
-    .wrap .card {
-      float: left;
-      width: 200px;
-      height: 100px;
-      padding: 8px;
-      background: #FFFFFF;
-      border-radius: 4px;
-      /* 每5个一行，每个间隔(100%-卡片宽度*5)/4 */
-      margin-right: calc(25% - 250px);
-    }
-    .wrap .card:nth-of-type(5n) {
-      /* 每行第5个不需要列间隔 */
-      margin-right: 0;
-      /* 每行第5个设置行间隔=>不足5个即为最后一行，不需要行间隔 */
-      margin-bottom: 20px;
-    }
-    .wrap .card:last-of-type {
-      /* 最后1个不需要行间隔=>防止最后一行正好有5个 */
-      margin-bottom: 0;
-    }
+
+.car {
+    padding: 20px 20px 20px 20px;
+    background-color: rgba(136, 173, 166, 1);
+    width: 100%;
+    height: 100%;
+}
+.card {
+    width: 18%;
+    height: 20%;
+    background-color: rgba(250, 255, 114, 1);
+    margin: 0 1% 1% 0;
+    float: left;
+}
 </style>
 </head>
 
@@ -59,5 +46,15 @@ p {
     <div class="card">6</div>
     <div class="card">7</div>
   </div>
+	<div class="car"> 拍就鸡丝粉<br><br>
+<div class="card"> </div>
+<div class="card"> </div>
+<div class="card"> </div>
+<div class="card"> </div>
+<div class="card"> </div>
+<div class="card"> </div>
+<div class="card"> </div>
+<div class="card"> </div>
+<div class="card"> </div></div>
 </body>
 </html>
