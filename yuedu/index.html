@@ -49,7 +49,10 @@
       <button id="extract-btn">提取内容</button>
       <button id="replace-btn">正则替换</button>
       <button id="format-btn">JS格式化</button>
+       <button id="download-btn">下载文件</button>
     </div>
+  <input type="file" id="fileInput" onchange="displayFileContent(this)">
+    <br>
     <textarea class="text-area" id="extract-textarea" style="height: 341px; width: 999px;"></textarea>
     
   </div>
@@ -72,9 +75,12 @@ extractBtn.addEventListener('click', () => {
 
 replaceBtn.addEventListener('click', () => {
   const text = extractTextarea.value;
-  const replacedText = text.replace(/(List": ")id\. /g, '$1#')
-    .replace(/(List": ")class\. /g, '$1.')
-    .replace(/(List": ".*?)@/g, '$1 ', 5);
+  const replacedText = text.replace(/(List": ")id\./g, '$1#')
+    .replace(/(List": ")class\./g, '$1.')
+    .replace(/(List": ".*?)@/g, '$1 ',5)
+  .replace(/(List": ".*?)\.0/g, '$1:nth-child(1)')
+  .replace(/(List": ".*?)\.1/g, '$1:nth-child(2)')
+  .replace(/(List": ".*?)!0/g, '$1:not(:nth-of-type(1))');
   extractTextarea.value = replacedText;
 });
 
@@ -88,8 +94,40 @@ formatBtn.addEventListener('click', () => {
     alert('Invalid JSON');
   }
 });
-</script>
+     function displayFileContent(fileInput) {
+            var file = fileInput.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    extractTextarea.value = e.target.result;
+                };
+                reader.readAsText(file);
+            }
+        }
+    const downloadBtn = document.getElementById('download-btn');
+     
 
+        downloadBtn.addEventListener('click', () => {
+            // 创建一个Blob对象，内容为文本框中的文本
+            const blob = new Blob(['\uFEFF' + extractTextarea.value], { type: 'text/plain;charset=utf-8' });
+
+            // 创建一个a标签并设置其属性
+            const anchor = document.createElement('a');
+            anchor.style.display = 'none';
+            anchor.href = URL.createObjectURL(blob);
+            anchor.download = 'output.txt'; // 这里可以修改文件名
+
+            // 将a标签添加到文档中并触发点击事件
+            document.body.appendChild(anchor);
+            anchor.click();
+
+            // 释放文件对象以避免内存泄漏
+            URL.revokeObjectURL(anchor.href);
+
+            // 从body中移除a标签
+            document.body.removeChild(anchor);
+        });
+</script>
 
 
 </body></html>
