@@ -1,3 +1,4 @@
+import json
 import requests
 
 def fetch_data(url):
