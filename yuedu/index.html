@@ -1,38 +1,40 @@
-<!DOCTYPE html>
 <html><head>
   <title>源阅读书源转换工具</title>
-  <style>
+  <style>        h1 {
+            text-align: center;
+            color: #007bff;
+        }
     body {
       font-family: Arial, sans-serif;
     }
     .container {
-      width: 600px;
+      width: 1000px;
       margin: 40px auto;
     }
     .input-group {
       margin-bottom: 20px;
     }
     .input-group input[type="text"] {
-      width: 800px;
+      width: 600px;
       height: 30px;
       padding: 10px;
       border: 1px solid #ccc;
     }
     .input-group button {
       height: 30px;
-      padding: 10px 20px;
+      
       border: none;
       border-radius: 5px;
       background-color: #4CAF50;
       color: #fff;
-      cursor: pointer;
+     
     }
     .input-group button:hover {
       background-color: #3e8e41;
     }
     .text-area {
-      width: 800px;
-      height: 300px;
+      width: 1000px;
+      height: 500px;
       padding: 10px;
       border: 1px solid #ccc;
       overflow: auto;
@@ -48,8 +50,8 @@
       <button id="replace-btn">正则替换</button>
       <button id="format-btn">JS格式化</button>
     </div>
-    <textarea class="text-area" id="extract-textarea"></textarea>
-    <textarea class="text-area" id="replace-textarea"></textarea>
+    <textarea class="text-area" id="extract-textarea" style="height: 341px; width: 999px;"></textarea>
+    
   </div>
 
   <script>
@@ -58,7 +60,6 @@ const extractBtn = document.getElementById('extract-btn');
 const replaceBtn = document.getElementById('replace-btn');
 const formatBtn = document.getElementById('format-btn');
 const extractTextarea = document.getElementById('extract-textarea');
-const replaceTextarea = document.getElementById('replace-textarea');
 
 extractBtn.addEventListener('click', () => {
   const url = urlInput.value;
@@ -73,21 +74,22 @@ replaceBtn.addEventListener('click', () => {
   const text = extractTextarea.value;
   const replacedText = text.replace(/(List": ")id\. /g, '$1#')
     .replace(/(List": ")class\. /g, '$1.')
-    .replace(/(List": ".*?)@/g, '$1', 5);
-  replaceTextarea.value = replacedText;
+    .replace(/(List": ".*?)@/g, '$1 ', 5);
+  extractTextarea.value = replacedText;
 });
 
 formatBtn.addEventListener('click', () => {
-  const jsonText = replaceTextarea.value;
+  const jsonText = extractTextarea.value;
   try {
     const jsonObject = JSON.parse(jsonText);
     const formattedJson = JSON.stringify(jsonObject, null, 4);
-    replaceTextarea.value = formattedJson;
+    extractTextarea.value = formattedJson;
   } catch (error) {
     alert('Invalid JSON');
   }
 });
 </script>
+
 
 
 </body></html>
