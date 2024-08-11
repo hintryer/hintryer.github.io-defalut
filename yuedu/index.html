@@ -1,68 +1,93 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>网页内容提取和格式化工具</title>
+<html><head>
+  <title>源阅读书源转换工具</title>
   <style>
-    textarea {
-      width: 100%;
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      width: 800px;
+      margin: 40px auto;
+    }
+    .input-group {
+      margin-bottom: 20px;
+    }
+    .input-group input[type="text"] {
+      width: 400px;
+      height: 30px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+    .input-group button {
+      height: 30px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: #fff;
+      cursor: pointer;
+    }
+    .input-group button:hover {
+      background-color: #3e8e41;
+    }
+    .text-area {
+      width: 400px;
       height: 300px;
       padding: 10px;
-      font-size: 14px;
-      font-family: Monaco, Consolas, "Lucida Console", monospace;
+      border: 1px solid #ccc;
+      overflow: auto;
     }
   </style>
 </head>
 <body>
-  <h1>网页内容提取和格式化工具</h1>
-  <input type="text" id="url-input" placeholder="请输入要提取的网址">
-  <button id="extract-btn">提取内容</button>
-  <textarea id="extract-textarea"></textarea>
-  <button id="replace-btn">正则替换</button>
-  <textarea id="replace-textarea"></textarea>
-  <button id="format-btn">在线格式化</button>
+  <h1>源阅读书源转换工具</h1>
+<div class="container">
+    <div class="input-group">
+      <input type="text" id="url-input" placeholder="请输入要提取的网址">
+      <button id="extract-btn">提取内容</button>
+      <button id="replace-btn">正则替换</button>
+      <button id="format-btn">JS格式化</button>
+    </div>
+    <textarea class="text-area" id="extract-textarea"></textarea>
+    <textarea class="text-area" id="replace-textarea"></textarea>
+  </div>
 
   <script>
-    const urlInput = document.getElementById('url-input');
-    const extractBtn = document.getElementById('extract-btn');
-    const extractTextarea = document.getElementById('extract-textarea');
-    const replaceBtn = document.getElementById('replace-btn');
-    const replaceTextarea = document.getElementById('replace-textarea');
-    const formatBtn = document.getElementById('format-btn');
+const urlInput = document.getElementById('url-input');
+const extractBtn = document.getElementById('extract-btn');
+const replaceBtn = document.getElementById('replace-btn');
+const formatBtn = document.getElementById('format-btn');
+const extractTextarea = document.getElementById('extract-textarea');
+const replaceTextarea = document.getElementById('replace-textarea');
 
-    extractBtn.addEventListener('click', () => {
-      const url = urlInput.value;
-      fetch(url)
-        .then(response => response.text())
-        .then(html => {
-          extractTextarea.value = html;
-        })
-        .catch(error => console.error(error));
+extractBtn.addEventListener('click', () => {
+  const url = urlInput.value;
+  fetch(url)
+    .then(response => response.text())
+    .then(data => {
+      extractTextarea.value = data;
     });
+});
 
-    replaceBtn.addEventListener('click', () => {
-      const text = extractTextarea.value;
-      let replacedText = text.replace(/(List": ")id\./g, (match, p1) => p1 + '#' );
-      replacedText = replacedText.replace(/(List": ")class/g, (match, p1) => p1 + '.' );
-      for (let i = 0; i < 5; i++) {
-        replacedText = replacedText.replace(/(List": ".*?)@/g, (match, p1) => p1 );
-      }
-      replaceTextarea.value = replacedText;
-    });
+replaceBtn.addEventListener('click', () => {
+  const text = extractTextarea.value;
+  const replacedText = text.replace(/(List": ")id\. /g, '$1#')
+    .replace(/(List": ")class\. /g, '$1.')
+    .replace(/(List": ".*?)@/g, '$1', 5);
+  replaceTextarea.value = replacedText;
+});
 
-    formatBtn.addEventListener('click', () => {
-      const text = replaceTextarea.value;
-      const formattedText = formatJsCode(text);
-      replaceTextarea.value = formattedText;
-    });
+formatBtn.addEventListener('click', () => {
+  const jsonText = replaceTextarea.value;
+  try {
+    const jsonObject = JSON.parse(jsonText);
+    const formattedJson = JSON.stringify(jsonObject, null, 4);
+    replaceTextarea.value = formattedJson;
+  } catch (error) {
+    alert('Invalid JSON');
+  }
+});
+</script>
 
-    function formatJsCode(code) {
-      const lines = code.split('\n');
-      const formattedLines = lines.map((line) => {
-        return line.replace(/^\s+/, '').replace(/\s+$/, '');
-      });
-      return formattedLines.join('\n');
-    }
-  </script>
-</body>
-</html>
+
+</body></html>
