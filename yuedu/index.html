@@ -50,6 +50,7 @@
       <button id="replace-btn">正则替换</button>
       <button id="format-btn">JS格式化</button>
        <button id="download-btn">下载文件</button>
+      <button id="copy-btn">一键复制</button>
     </div>
   <input type="file" id="fileInput" onchange="displayFileContent(this)">
     <br>
@@ -127,6 +128,11 @@ formatBtn.addEventListener('click', () => {
             // 从body中移除a标签
             document.body.removeChild(anchor);
         });
+    document.getElementById('copy-btn').addEventListener('click', () => {
+ document.getElementById('extract-textarea').select();
+    document.execCommand('copy');
+    alert('文本已复制到剪贴板！');
+});
 </script>
 
 
