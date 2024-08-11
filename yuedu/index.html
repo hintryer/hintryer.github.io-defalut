@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>网页内容提取和格式化工具</title>
+  <style>
+    textarea {
+      width: 100%;
+      height: 300px;
+      padding: 10px;
+      font-size: 14px;
+      font-family: Monaco, Consolas, "Lucida Console", monospace;
+    }
+  </style>
+</head>
+<body>
+  <h1>网页内容提取和格式化工具</h1>
+  <input type="text" id="url-input" placeholder="请输入要提取的网址">
+  <button id="extract-btn">提取内容</button>
+  <textarea id="extract-textarea"></textarea>
+  <button id="replace-btn">正则替换</button>
+  <textarea id="replace-textarea"></textarea>
+  <button id="format-btn">在线格式化</button>
+
+  <script>
+    const urlInput = document.getElementById('url-input');
+    const extractBtn = document.getElementById('extract-btn');
+    const extractTextarea = document.getElementById('extract-textarea');
+    const replaceBtn = document.getElementById('replace-btn');
+    const replaceTextarea = document.getElementById('replace-textarea');
+    const formatBtn = document.getElementById('format-btn');
+
+    extractBtn.addEventListener('click', () => {
+      const url = urlInput.value;
+      fetch(url)
+        .then(response => response.text())
+        .then(html => {
+          extractTextarea.value = html;
+        })
+        .catch(error => console.error(error));
+    });
+
+    replaceBtn.addEventListener('click', () => {
+      const text = extractTextarea.value;
+      let replacedText = text.replace(/(List": ")id\./g, (match, p1) => p1 + '#' );
+      replacedText = replacedText.replace(/(List": ")class/g, (match, p1) => p1 + '.' );
+      for (let i = 0; i < 5; i++) {
+        replacedText = replacedText.replace(/(List": ".*?)@/g, (match, p1) => p1 );
+      }
+      replaceTextarea.value = replacedText;
+    });
+
+    formatBtn.addEventListener('click', () => {
+      const text = replaceTextarea.value;
+      const formattedText = formatJsCode(text);
+      replaceTextarea.value = formattedText;
+    });
+
+    function formatJsCode(code) {
+      const lines = code.split('\n');
+      const formattedLines = lines.map((line) => {
+        return line.replace(/^\s+/, '').replace(/\s+$/, '');
+      });
+      return formattedLines.join('\n');
+    }
+  </script>
+</body>
+</html>
