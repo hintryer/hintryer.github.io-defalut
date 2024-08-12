@@ -39,7 +39,31 @@
       border: 1px solid #ccc;
       overflow: auto;
     }
-  </style>
+   .description {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+        }
+
+        .link-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .link-list li {
+            margin-bottom: 10px;
+        }
+
+        .link-list a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .link-list a:hover {
+            text-decoration: underline;
+        }
+
+</style>
 </head>
 <body>
   <h1>源阅读书源转换工具</h1>
@@ -57,7 +81,15 @@
     <textarea class="text-area" id="extract-textarea" style="height: 341px; width: 999px;"></textarea>
     
   </div>
-
+<div class="description">
+<p>Real</p>
+<p>本网站用于将源阅读的书源转换为IOS源阅读APP的书源</p>
+<ul class="link-list">
+<li>源仓库：<a href="https://www.yckceo.com/yuedu/shuyuan/index.html">https://www.yckceo.com/yuedu/shuyuan/index.html</a></li>
+<li>阅读书源：<a href="https://yuedu.miaogongzi.net/gx.html">https://yuedu.miaogongzi.net/gx.html</a></li>
+</ul>
+</div>
+    
   <script>
 const urlInput = document.getElementById('url-input');
 const extractBtn = document.getElementById('extract-btn');
@@ -134,6 +166,7 @@ formatBtn.addEventListener('click', () => {
     alert('文本已复制到剪贴板！');
 });
 </script>
+
 
 
 </body></html>
