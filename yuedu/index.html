@@ -57,6 +57,23 @@
         .link-list a:hover {
             text-decoration: underline;
         }
+        h1 {
+            text-align: center;
+        }
+        /* Add this to make the layout responsive on mobile devices */
+        @media only screen and (max-width: 768px) {
+            .container {
+                width: 90%;
+                margin: 20px auto;
+            }
+            .input-group input[type="text"] {
+                width: 80%;
+            }
+            .text-area {
+                width: 90%;
+                height: 300px;
+            }
+        }
     </style>
 </head>
 <body>
