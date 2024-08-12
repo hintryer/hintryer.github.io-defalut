@@ -85,9 +85,9 @@
 <p>Real</p>
 <p>本网站用于将源阅读的书源转换为IOS源阅读APP的书源</p>
 <ul class="link-list">
-<li>源仓库：<a href="https://www.yckceo.com/yuedu/shuyuan/index.html">https://www.yckceo.com/yuedu/shuyuan/index.html</a></li>
-<li>阅读书源：<a href="https://yuedu.miaogongzi.net/gx.html">https://yuedu.miaogongzi.net/gx.html</a></li>
-</ul>
+<li>源仓库：<a href="https://www.yckceo.com/yuedu/shuyuan/index.html" target="_blank">https://www.yckceo.com/yuedu/shuyuan/index.html</a></li>
+<li>猫公子源：<a href="https://yuedu.miaogongzi.net/gx.html" target="_blank">https://yuedu.miaogongzi.net/gx.html</a></li>
+<li>一程书源：<a href="https://cdn05042023.gitlink.org.cn/api/v1/repos/yi-c/yd/raw/sy.json" target="_blank">https://cdn05042023.gitlink.org.cn/api/v1/repos/yi-c/yd/raw/sy.json</a></li></ul>
 </div>
     
   <script>
@@ -113,7 +113,8 @@ replaceBtn.addEventListener('click', () => {
     .replace(/(List": ".*?)@/g, '$1 ',5)
   .replace(/(List": ".*?)\.0/g, '$1:nth-child(1)')
   .replace(/(List": ".*?)\.1/g, '$1:nth-child(2)')
-  .replace(/(List": ".*?)!0/g, '$1:not(:nth-of-type(1))');
+  .replace(/(List": ".*?)!0/g, '$1:not(:nth-of-type(1))')
+.replace(/(List": ".*?)!1/g, '$1:not(:nth-of-type(2))');
   extractTextarea.value = replacedText;
 });
 
@@ -166,6 +167,7 @@ formatBtn.addEventListener('click', () => {
     alert('文本已复制到剪贴板！');
 });
 </script>
+
 
 
 
