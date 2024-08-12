@@ -121,8 +121,8 @@ extractBtn.addEventListener('click', fetchContent);
 replaceBtn.addEventListener('click', () => {
     const text = extractTextarea.value;
     const replacedText = replaceContent(text);
-  const replacedText = replaceContent(text);
-  const replacedText = replaceContent(text);
+   replacedText = replaceContent(text);
+   replacedText = replaceContent(text);
     extractTextarea.value = replacedText;
 });
 
@@ -154,6 +154,7 @@ function replaceContent(text) {
         .replace(/(List": ".*?)@/g, '$1 ',5)
         .replace(/(List": ".*?)\.0/g, '$1:nth-child(1)')
         .replace(/(List": ".*?)\.1/g, '$1:nth-child(2)')
+        .replace(/(List": ".*?)\.2/g, '$1:nth-child(3)')
         .replace(/(List": ".*?)!0/g, '$1:not(:nth-of-type(1))')
         .replace(/(List": ".*?)!1/g, '$1:not(:nth-of-type(2))');
 }
