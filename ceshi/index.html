@@ -1,34 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Python API Call Example</title>
-<script>
-function fetchData() {
-    fetch('fetch_data.py', {
-        method: 'GET',
-    })
-    .then(response => {
-        if (response.ok) {
-            return response.json();
-        } else {
-            throw new Error('Error: ' + response.statusText);
-        }
-    })
-    .then(data => {
-        console.log('Data:', data);
-        // 在这里处理数据，例如将其显示在页面上
-        document.getElementById('result').innerHTML = JSON.stringify(data, null, 2);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        document.getElementById('result').innerHTML = 'An error occurred: ' + error.message;
-    });
-}
-</script>
+<html><head>
+  <meta charset="UTF-8">
+  <title>Monaco Editor</title>
+<script src="https://unpkg.com/monaco-editor@latest/min/vs/loader.js"></script>
+  <style>
+    #editor-container {
+      flex: 1;
+    }
+
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 200vh;
+    }
+  </style>
 </head>
 <body>
-<button onclick="fetchData()">Fetch Data2</button>
-<div id="result"></div>
-</body>
-</html>
+  <div id="container">
+    <textarea id="code-input">// 你的代码在这里
+  </textarea>
+  <div id="editor-container"></div>
+</div>
+
+  <script>
+    require.config({ paths: { 'vs': 'https://unpkg.com/monaco-editor@latest/min/vs' }});
+
+  require(['vs/editor/editor.main'], function() {
+      const editor = monaco.editor.create(document.getElementById('editor-container'), {
+        value: document.getElementById('code-input').value,
+        language: 'html',
+        lineNumbers: true,
+        minimap: {
+          enabled: false
+        },
+        folding: true
+      });
+    });
+  </script>
+
+</body></html>
