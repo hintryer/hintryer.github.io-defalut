@@ -1,143 +1,144 @@
-<html lang="zh"><head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>工具页面</title>
-<style>
-body {
-font-family: Arial, sans-serif;
-margin: 0;
-padding: 0;
-display: flex;
-flex-direction: column;
-align-items: center;
-}
-header {
-background-color: #4CAF50;
-color: white;
-padding: 10px 20px;
-text-align: center;
-width: 100%;
-}
-.tools-container {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-margin: 20px 0;
-}
-.tool {
-border: 1px solid #ccc;
-border-radius: 5px;
-margin: 10px;
-padding: 15px;
-width: calc(20% - 40px); /* 5列布局，减去边距 */
-box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-text-align: center;
-}
-footer {
-background-color: #333;
-color: white;
-padding: 10px 20px;
-text-align: center;
-width: 100%;
-}
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>工具页面</title>
+		<style>
+			body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			}
+			header {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 20px;
+			text-align: center;
+			width: 100%;
+			}
+			.tools-container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			margin: 20px 0;
+			}
+			.tool {
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			margin: 10px;
+			padding: 15px;
+			width: calc(20% - 40px); /* 5列布局，减去边距 */
+			box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+			text-align: center;
+			}
+			footer {
+			background-color: #333;
+			color: white;
+			padding: 10px 20px;
+			text-align: center;
+			width: 100%;
+			}
+			
+			@media (max-width: 768px) {
+			.tool {
+			width: calc(45% - 40px); /* 平板布局，两列 */
+			}
+			}
+			
+			@media (max-width: 480px) {
+			.tool {
+			width: calc(45% - 40px); /* 手机布局，单列 */
+			}
+			}
+		</style>
+	</head>
+	<body>
 
-@media (max-width: 768px) {
-.tool {
-width: calc(45% - 40px); /* 平板布局，两列 */
-}
-}
+		<header>
+			<h1>工具页面</h1>
+		</header>
 
-@media (max-width: 480px) {
-.tool {
-width: calc(90% - 40px); /* 手机布局，单列 */
-}
-}
-</style>
-</head>
-<body>
+		<div class="tools-container">
+			<div class="tool">
+				<h3>一键抠图</h3>
+				<p>普通分辨率图片下载免费（无需注册）高分辨率下载需注册（不免费）。中文版容易打不开。</p>
+				<a target="_blank" href="https://www.remove.bg/zh">https://www.remove.bg/zh</a>
+			</div>
+			<div class="tool">
+				<h3>在线PS</h3>
+				<p>「Photopea」是一个国外开发者开发的免费在线高级图片编辑器。无需注册</p>
+				<a target="_blank" href="https://www.photopea.com/">https://www.photopea.com/</a>
+			</div>
+			<div class="tool">
+				<h3>在线PS</h3>
+				<p>「uupoop」你可以简单看作国内版的「Photopea」。下载需要注册
 
-<header>
-<h1>工具页面</h1>
-</header>
+				</p>
+				<a target="_blank" href="https://www.uupoop.com/">https://www.uupoop.com</a>
+			</div>
+			<div class="tool">
+				<h3>图片文字提取（OCR）</h3>
+				<p>白描网页版</p>
+				<a target="_blank" href="https://web.baimiaoapp.com/">https://web.baimiaoapp.com/</a>
+			</div>
 
-<div class="tools-container">
-<div class="tool">
-<h3>一键抠图</h3>
-<p>普通分辨率图片下载免费（无需注册）高分辨率下载需注册（不免费）。中文版容易打不开。</p>
-<a target="_blank" href="https://www.remove.bg/zh">https://www.remove.bg/zh</a>
-</div>
-<div class="tool">
-<h3>在线PS</h3>
-<p>「Photopea」是一个国外开发者开发的免费在线高级图片编辑器。无需注册</p>
-<a target="_blank" href="https://www.photopea.com/">https://www.photopea.com/</a>
-</div>
-<div class="tool">
-<h3>在线PS</h3>
-<p>「uupoop」你可以简单看作国内版的「Photopea」。下载需要注册
+			<div class="tool">
+				<h3>AI对话</h3>
+				<p>你是一名资深程序员，精通各种程序开发语言。请按照我的要求帮我编写相应的程序代码或者检查程序代码问题并进行优化。</p>
+				<a target="_blank" href="https://ai.qdymys.cn/#/">https://ai.qdymys.cn/#/</a>
+			</div>
+			<div class="tool">
+				<h3>AI对话</h3>
+				<p>AI对话</p>
+				<a target="_blank" href="https://www.zaiwen.top/">https://www.zaiwen.top/</a>
+				<a target="_blank" href="https://chatgai.lovepor.cn/">https://chatgai.lovepor.cn/</a>
+				<a target="_blank" href="https://chat10.free2gpt.xyz/">https://chat10.free2gpt.xyz/</a>
+			</div>
+			<div class="tool">
+				<h3>在线网页设计</h3>
+				<p>无需注册，自己设计，可导入导出源码</p>
+				<a target="_blank" href="https://htmlpage.cn/builder/">https://htmlpage.cn/builder/</a>
+			</div>
+			<div class="tool">
+				<h3>在线网页设计</h3>
+				<p>可以QQ登录，右键编辑CSS属性，不可以导入源码</p>
+				<a target="_blank" href="http://www.58html.com/html/">http://www.58html.com/html/</a>
+			</div>
+			<div class="tool">
+				<h3>在线 Markdown 编辑器</h3>
+				<p>开源，有各种快捷按键，非常好用</p>
+				<a target="_blank" href="https://pandao.github.io/editor.md/">https://pandao.github.io/editor.md/</a>
+			</div>
 
-</p>
-<a target="_blank" href="https://www.uupoop.com/">https://www.uupoop.com</a>
-</div><div class="tool">
-<h3>图片文字提取（OCR）</h3>
-<p>白描网页版</p>
-<a target="_blank" href="https://web.baimiaoapp.com/">https://web.baimiaoapp.com/</a>
-</div>
+			<div class="tool">
+				<h3>在线 Markdown 编辑器</h3>
+				<p>第一个简洁无广告，第二个有其他东西，不影响使用</p>
+				<a target="_blank" href="https://www.jyshare.com/front-end/712/">https://www.jyshare.com/front-end/712/</a>
+				<a target="_blank" href="https://www.lddgo.net/string/markdown-editor">https://www.lddgo.net/string/markdown-editor</a>
+			</div>
+			<div class="tool">
+				<h3>提取和格式化工具</h3>
+				<p>阅读书源转为源阅读书源</p>
+				<a target="_blank" href="./yuedu2/">阅读——文本框</a>
+				<a target="_blank" href="./yuedu/">阅读</a>
+			</div>
+			<div class="tool">
+				<h3>测试</h3>
+				<p>>测试</p>
+				<a target="_blank" href="/ceshi/">点击这里</a>
+			</div>
+			<div class="tool">
+				<h3>工具12</h3>
+				<p>工具12的说明文字。</p>
+				<a target="_blank" href="#">点击这里</a>
+			</div>
+		</div>
 
-<div class="tool">
-<h3>AI对话</h3>
-<p>你是一名资深程序员，精通各种程序开发语言。请按照我的要求帮我编写相应的程序代码或者检查程序代码问题并进行优化。</p>
-<a target="_blank" href="https://ai.qdymys.cn/#/">https://ai.qdymys.cn/#/</a>
-</div>
-<div class="tool">
-<h3>AI对话</h3>
-<p>AI对话</p><a target="_blank" href="https://www.zaiwen.top/">https://www.zaiwen.top/</a>
-<a target="_blank" href="https://chatgai.lovepor.cn/">https://chatgai.lovepor.cn/</a>
-<a target="_blank" href="https://chat10.free2gpt.xyz/">https://chat10.free2gpt.xyz/</a></div>
-<div class="tool">
-<h3>在线网页设计</h3>
-<p>无需注册，自己设计，可导入导出源码</p>
-<a target="_blank" href="https://htmlpage.cn/builder/">https://htmlpage.cn/builder/</a>
-</div>
-<div class="tool">
-<h3>在线网页设计</h3>
-<p>可以QQ登录，右键编辑CSS属性，不可以导入源码</p>
-<a target="_blank" href="http://www.58html.com/html/">http://www.58html.com/html/</a>
-</div>
-<div class="tool">
-<h3>在线 Markdown 编辑器</h3>
-<p>开源，有各种快捷按键，非常好用</p>
-<a target="_blank" href="https://pandao.github.io/editor.md/">https://pandao.github.io/editor.md/</a>
-</div>
-
-<div class="tool">
-<h3>在线 Markdown 编辑器</h3>
-<p>第一个简洁无广告，第二个有其他东西，不影响使用</p>
-<a target="_blank" href="https://www.jyshare.com/front-end/712/">https://www.jyshare.com/front-end/712/</a>
-<a target="_blank" href="https://www.lddgo.net/string/markdown-editor">https://www.lddgo.net/string/markdown-editor</a></div>
-<div class="tool">
-<h3>提取和格式化工具</h3>
-<p>阅读书源转为源阅读书源</p>
-<a target="_blank" href="./yuedu/">阅读</a>
-</div>
-<div class="tool">
-<h3>工具12</h3>
-<p>工具12的说明文字。</p>
-<a target="_blank" href="#">点击这里</a>
-</div><div class="tool">
-<h3>工具12</h3>
-<p>工具12的说明文字。</p>
-<a target="_blank" href="#">点击这里</a>
-</div></div>
-
-<footer>
-<p>版权所有 © 2024</p>
-</footer>
-
-
-
-
-
-
-
-
-</body></html>
+		<footer>
+			<p>版权所有 © 2024</p>
+		</footer>
+	</body>
+</html>
