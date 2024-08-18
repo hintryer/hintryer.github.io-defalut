@@ -72,7 +72,7 @@
       // 格式化代码
       document.getElementById("format-button").onclick = function() {
         
-  const editor = editor.getModels()[0];
+  const editor = monaco.editor.getModels()[0];
   const model = editor.getModel();
 
   const formattedCode = monaco.editor.action.format.format(model, {
