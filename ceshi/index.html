@@ -1,105 +1,219 @@
-<html><head>
-  <meta charset="UTF-8">
-  <title>Monaco Editor with Code Actions</title>
-  <style>
-    #editor-container {
-      flex: 1;
-    }
-
-    #editor{
-      display: flex;
-      flex-direction: column;
-      height: 200px;
-    }
-  </style></head>
-<body>
-  <div id="container">
-    <div id="url-input">
-      <label for="url">URL:</label>
-      <input type="text" id="url">
-    </div>
-    <div id="editor"></div>
-    <div id="buttons">
-      <button id="copy-button">复制代码</button>
-      <button id="upload-button">上传代码</button>
-      <button id="download-button">下载代码</button>
-      <button id="format-button">格式化代码</button>
-    </div>
-  </div>
-
-  <script src="https://unpkg.com/monaco-editor/min/vs/loader.js"></script>
-  <script>
-    require.config({ paths: { 'vs': 'https://unpkg.com/monaco-editor/min/vs' }});
-    require(['vs/editor/editor.main'], function() {
-      // 创建 Monaco 编辑器
-      const editor = monaco.editor.create(document.getElementById('editor'), {
-        value: '//dfwflsf',
-        language: 'javascript',
-        theme: 'vs'
-      });
-
-      // 一键复制代码
-      document.getElementById("copy-button").onclick = function() {
-        const code = editor.getValue();
-        navigator.clipboard.writeText(code);
-        alert('已复制到剪贴板');
-      };
-
-      // 一键上传代码
-      document.getElementById("upload-button").onclick = function() {
-        const code = editor.getValue();
-
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", "upload.php");
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.send(JSON.stringify({ code: code }));
-      };
-
-      // 一键下载代码
-      document.getElementById("download-button").onclick = function() {
-       const textareaContent = extractTextarea.value;
-    const blob = new Blob([textareaContent], { type: 'text/plain' });
-    const urlCreator = window.URL || window.webkitURL;
-    const downloadUrl = urlCreator.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = downloadUrl;
-    a.download = 'output.txt';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-      };
-
-      // 格式化代码
-      document.getElementById("format-button").onclick = function() {
-        
-  const editor = monaco.editor.getModels()[0];
-  const model = editor.getModel();
-
-  const formattedCode = monaco.editor.action.format.format(model, {
-    tabSize: 2,
-    insertSpaces: true,
-    wrapLineLength: 120
-  });
-
-  model.setValue(formattedCode);
-};
-
-      // 从 URL 加载代码
-      document.getElementById("url").addEventListener("input", function() {
-        const url = this.value;
-        if (url.length > 0) {
-          const xhr = new XMLHttpRequest();
-          xhr.open("GET", url);
-          xhr.responseType = "text";
-          xhr.onload = function() {
-            if (xhr.status === 200) {
-              editor.setValue(xhr.response);
-            }
-          };
-          xhr.send();
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>源阅读书源转换工具</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
         }
-      });
-    });
-  </script>
 
-</body></html>
+        .container {
+            width: 1000px;
+            margin: 40px auto;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group input[type="text"] {
+            width: 600px;
+            height: 30px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .input-group button {
+            height: 30px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        .input-group button:hover {
+            background-color: #3e8e41;
+        }
+
+        .description {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+        }
+
+        .link-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .link-list li {
+            margin-bottom: 10px;
+        }
+
+        .link-list a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .link-list a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        /* Add this to make the layout responsive on mobile devices */
+        @media only screen and (max-width: 768px) {
+            .container {
+                width: 90%;
+                margin: 20px auto;
+            }
+
+            .input-group input[type="text"] {
+                width: 80%;
+            }
+
+            .text-area {
+                width: 90%;
+                height: 300px;
+            }
+        }
+
+        #editor {
+            display: flex;
+            flex-direction: column;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>源阅读书源转换工具</h1>
+        <div class="container">
+            <div class="input-group">
+                <input type="text" id="url-input" placeholder="请输入要提取的网址">
+                <button id="extract-btn">提取内容</button>
+                <input type="file" id="file-input" style="display: none;">
+                <button id="replace-btn">正则替换</button>
+                <button id="format-btn">JS格式化</button>
+                <button id="upload-btn">上传文件</button>
+                <button id="download-btn">下载文件</button>
+                <button id="copy-btn">一键复制</button>
+            </div>
+        </div>
+    </div>
+    <div id="editor">
+    </div>
+    <div class="description">
+        <p>Real</p>
+        <p>本网站用于将源阅读的书源转换为IOS源阅读APP的书源</p>
+        <ul class="link-list">
+            <li>源仓库：<a href="https://www.yckceo.com/yuedu/shuyuan/index.html" target="_blank">https://www.yckceo.com/yuedu/shuyuan/index.html</a></li>
+            <li>猫公子源：<a href="https://yuedu.miaogongzi.net/gx.html" target="_blank">https://yuedu.miaogongzi.net/gx.html</a></li>
+            <li>一程书源：<a href="https://cdn05042023.gitlink.org.cn/api/v1/repos/yi-c/yd/raw/sy.json" target="_blank">https://cdn05042023.gitlink.org.cn/api/v1/repos/yi-c/yd/raw/sy.json</a></li>
+        </ul>
+    </div>
+    <script src="https://unpkg.com/monaco-editor/min/vs/loader.js"></script>
+    <script>
+        require.config({
+            paths: {
+                'vs': 'https://unpkg.com/monaco-editor/min/vs'
+            }
+        });
+        require(['vs/editor/editor.main'], function() {
+            // 创建 Monaco 编辑器
+            const editor = monaco.editor.create(document.getElementById('editor'), {
+                value: '//dfwflsf',
+                language: 'javascript',
+                theme: 'vs'
+            });
+            const urlInput = document.getElementById('url-input');
+            const extractBtn = document.getElementById('extract-btn');
+            const replaceBtn = document.getElementById('replace-btn');
+            const formatBtn = document.getElementById('format-btn');
+            const extractTextarea = document.getElementById('extract-textarea');
+            const downloadBtn = document.getElementById('download-btn');
+            const copyBtn = document.getElementById('copy-btn');
+
+            // 一键复制代码
+            copyBtn.addEventListener('click', () => {
+                const code = editor.getValue();
+                navigator.clipboard.writeText(code);
+                alert('已复制到剪贴板');
+            });
+            // 格式化代码
+            formatBtn.addEventListener('click', () => {
+                const jsonText = editor.getValue();
+                try {
+                    const jsonObject = JSON.parse(jsonText);
+                    const formattedJson = JSON.stringify(jsonObject, null, 4);
+                    editor.setValue(formattedJson);
+                } catch (error) {
+                    alert('Invalid JSON');
+                }
+            });
+            // 正则替换代码
+            replaceBtn.addEventListener('click', () => {
+                const text = editor.getValue();
+                const replacedText = replaceContent(text);
+                editor.setValue(replacedText);
+            });
+
+            function replaceContent(text) {
+                for (let i = 0; i < 5; i++) {
+                    text = text
+                        .replace(/(List": ")id\./g, '$1#')
+                        .replace(/(List": ")class\./g, '$1.')
+                        .replace(/(List": ".*?)@/g, '$1 ')
+                        .replace(/(List": ".*?)\.0/g, '$1:nth-child(1)')
+                        .replace(/(List": ".*?)\.1/g, '$1:nth-child(2)')
+                        .replace(/(List": ".*?)\.2/g, '$1:nth-child(3)')
+                        .replace(/(List": ".*?)!0/g, '$1:not(:nth-of-type(1))')
+                        .replace(/(List": ".*?)!1/g, '$1:not(:nth-of-type(2))');
+                }
+                return text;
+            }
+            // 一键下载代码
+            downloadBtn.addEventListener('click', () => {
+                const textareaContent = editor.getValue();
+                const blob = new Blob([textareaContent], {
+                    type: 'text/plain'
+                });
+                const urlCreator = window.URL || window.webkitURL;
+                const downloadUrl = urlCreator.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = downloadUrl;
+                a.download = 'output.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            });
+            // 上传文件代码
+            const fileInput = document.getElementById('file-input');
+            const uploadBtn = document.getElementById('upload-btn');
+            uploadBtn.addEventListener('click', () => {
+                fileInput.click();
+            });
+
+            fileInput.addEventListener('change', () => {
+                const file = fileInput.files[0];
+
+                const reader = new FileReader();
+                reader.onload = () => {
+                    // 创建一个新的文本模型
+                    const model = monaco.editor.createModel(reader.result, 'javascript');
+
+                    // 将新模型设置到编辑器中
+                    editor.setModel(model);
+                };
+                reader.readAsText(file);
+            });
+        });
+    </script>
+</body>
+
+</html>
