@@ -1,7 +1,4 @@
----
-css:
-  - custom.css
----
+<link rel="stylesheet" href="style.css">
 # 在线工具
 
 | 内容 | 网址 | 说明 |
@@ -17,4 +14,4 @@ css:
 | | <http://www.58html.com/html/> | 可以QQ登录，右键编辑CSS属性，不可以导入源码 |
 | **在线 Markdown** | <https://pandao.github.io/editor.md/> | 开源，有各种快捷按键，非常好用,打开较慢 |
 | | <https://www.jyshare.com/front-end/712/> | 菜鸟工具，简洁无广告，打开较快，引用开源模块 |
-| | <https://www.lddgo.net/string/markdown-editor> | 有其他东西，不影响使用123 |
+| | <https://www.lddgo.net/string/markdown-editor> | 有其他东西，不影响使用|
