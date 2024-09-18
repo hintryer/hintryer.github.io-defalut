@@ -1,4 +1,7 @@
-<link rel="stylesheet" href="custom.css">
+---
+css:
+  - custom.css
+---
 
 # 在线工具
 
