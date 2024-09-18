@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Marked.js Markdown to HTML</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked@latest/marked.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <textarea id="editor"></textarea>
+    </div>
+    <div class="right">
+      <textarea id="preview"></textarea>
+    </div>
+    <button id="convert-button">Convert</button>
+  </div>
+  <script type="text/javascript">
+    var editor = document.getElementById('editor');
+    var preview = document.getElementById('preview');
+    var convertButton = document.getElementById('convert-button');
+
+    convertButton.addEventListener('click', function() {
+      var markdown = editor.value;
+      var html = marked(markdown);
+      preview.innerHTML = html;
+    });
+  </script>
+</body>
+</html>
