@@ -90,7 +90,14 @@ console.log(formattedHtml);
       $("#copy-html-btn").click(function() {
         $("#html-code").select();
         document.execCommand("copy");
-        alert("HTML code copied to clipboard.");
+                    const alertBox = $('<div class="alert">已复制.</div>');
+            $('body').append(alertBox);
+
+            setTimeout(function() {
+                alertBox.fadeOut(500, function() {
+                    $(this).remove();
+                });
+            }, 1000);
       });
     });
   </script>
