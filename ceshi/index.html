@@ -45,9 +45,22 @@
 
       $("#get-html-btn").click(function() {
         var html = testEditor.getHTML();
-        var html_f="<!DOCTYPE html><html><head><meta charset=<title>我的小站</title></head><body>"
-var html_b="</body></html>"
-        $("#html-code").val(html_f+html+html_b);
+         // 使用模板字符串构建完整的 HTML
+    var fullHtml = `
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <link rel="stylesheet" href="../style/style.css">
+<title>我的小站</title>
+  
+</head>
+<body>
+            ${html} <!-- 嵌入编辑器生成的 HTML -->
+        </body>
+        </html>
+    `;
+        $("#html-code").val(fullHtml);
         $("#html-modal").modal("show");
       });
 
