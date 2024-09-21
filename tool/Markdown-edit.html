@@ -6,8 +6,21 @@
   <title>Markdown 在线编辑器</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/editor.md@latest/css/editormd.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify-html.min.js"></script>
   <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
 </head>
+  <style>
+        .alert {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+    </style>
 <body>
   <div id="layout">
     <header>
@@ -15,7 +28,14 @@
     </header>
     <div id="test-editormd">
       <textarea style="display:none;">
-#### Hello Word
+
+#### Disabled options
+
+- TeX (Based on KaTeX);
+- Emoji;
+- Task lists;
+- HTML tags decode;
+- Flowchart and Sequence Diagram;
       </textarea>
     </div>
     <button id="get-html-btn" class="btn btn-primary">Get HTML</button>
@@ -55,7 +75,6 @@
 
       $("#get-html-btn").click(function() {
         var html = testEditor.getHTML();
-        console.log(html);
          // 使用模板字符串构建完整的 HTML
     var fullHtml = `
 <!DOCTYPE html>
@@ -63,23 +82,34 @@
 <head>
 <meta charset="utf-8">
   <link rel="stylesheet" href="../style/style.css">
-<title>我的小站</title>
-  
+<title>我的小站</title>  
 </head>
 <body>
             ${html} <!-- 嵌入编辑器生成的 HTML -->
-        </body>
+            </body>
         </html>
     `;
         console.log(fullHtml);
-        $("#html-code").val(fullHtml);
+        var formattedHtml = html_beautify(fullHtml, {
+                indent_size: 4,
+                space_in_empty_paren: true
+            });
+console.log(formattedHtml);
+        $("#html-code").val(formattedHtml);
         $("#html-modal").modal("show");
       });
 
       $("#copy-html-btn").click(function() {
         $("#html-code").select();
         document.execCommand("copy");
-        alert("HTML code copied to clipboard.");
+                    const alertBox = $('<div class="alert">已复制.</div>');
+            $('body').append(alertBox);
+
+            setTimeout(function() {
+                alertBox.fadeOut(500, function() {
+                    $(this).remove();
+                });
+            }, 1000);
       });
     });
   </script>
