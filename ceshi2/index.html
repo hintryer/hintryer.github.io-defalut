@@ -57,7 +57,8 @@
 
 <body>
   <h1>JSON File Replacement Tool</h1>
-  <form method="post" action="/">
+  <form method="post" action="/submit-json">
+    <input type="hidden" name="_method" value="PUT">
     <label for="json_url">Enter the URL of the JSON file:</label>
     <input type="text" id="json_url" name="json_url" required>
     <button type="submit">Replace and Display</button>
@@ -66,10 +67,11 @@
   <div id="json-result"></div>
 
   <script>
-    const jsonUrl = document.getElementById('json_url');
+    const jsonUrl = "https://www.yckceo.com/yuedu/shuyuan/json/id/5696.json";
 
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', jsonUrl.value, true);
+    xhr.open('POST', jsonUrl, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function() {
       if (xhr.status === 200) {
         const jsonResponse = JSON.parse(xhr.responseText);
