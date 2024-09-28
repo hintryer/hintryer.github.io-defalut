@@ -89,26 +89,36 @@ def replace_selectors(json_data):
                 if isinstance(item, dict):
                     replace_selectors(item)
 
+def download_json(json_url):
+    try:
+        response = requests.get(json_url, timeout=5)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        return None
+
+def save_json(json_data, file_name):
+    json_dir = os.path.join(os.path.dirname(__file__), 'json')
+    if not os.path.exists(json_dir):
+        os.makedirs(json_dir)
+
+    json_path = os.path.join(json_dir, file_name)
+    with open(json_path, 'w', encoding='utf-8') as file:
+        json.dump(json_data, file, indent=4, ensure_ascii=False)
+
 if __name__ == "__main__":
     @app.route('/', methods=['GET', 'POST'])
     def index():
         if request.method == 'POST':
             json_url = request.form['json_url']
-            response = requests.get(json_url)
-            json_data = response.json()
+            json_data = download_json(json_url)
+            if json_data is None:
+                return render_template('error.html', error='下载 JSON 数据失败')
             replace_selectors(json_data)
 
-            # 提取文件名，并保存 JSON 内容到文件
-            file_name = json_url.split('/')[-1]
-            json_dir = os.path.join(os.path.dirname(__file__), 'json')
-            if not os.path.exists(json_dir):
-                os.makedirs(json_dir)
+            file_name = os.path.basename(json_url)
+            save_json(json_data, file_name)
 
-            json_path = os.path.join(json_dir, file_name)
-            with open(json_path, 'w', encoding='utf-8') as file:
-                json.dump(json_data, file, indent=4, ensure_ascii=False)
-
-            # 生成下载链接
             download_link = url_for('download', file_name=file_name)
 
             return render_template('result.html', json_data=json_data, download_link=download_link)
