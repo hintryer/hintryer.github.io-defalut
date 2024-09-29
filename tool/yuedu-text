@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>源阅读书源转换工具</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 1000px;
+            margin: 40px auto;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group input[type="text"] {
+            width: 600px;
+            height: 30px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        .input-group button {
+            height: 30px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: #fff;
+        }
+        .input-group button:hover {
+            background-color: #3e8e41;
+        }
+        .text-area {
+            width: 1000px;
+            height: 500px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow: auto;
+        }
+        .description {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+        }
+        .link-list {
+            list-style: none;
+            padding: 0;
+        }
+        .link-list li {
+            margin-bottom: 10px;
+        }
+        .link-list a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .link-list a:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            text-align: center;
+        }
+        /* Add this to make the layout responsive on mobile devices */
+        @media only screen and (max-width: 768px) {
+            .container {
+                width: 90%;
+                margin: 20px auto;
+            }
+            .input-group input[type="text"] {
+                width: 80%;
+            }
+            .text-area {
+                width: 90%;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>源阅读书源转换工具</h1>
+    <div class="container">
+        <div class="input-group">
+            <input type="text" id="url-input" placeholder="请输入要提取的网址">
+            <button id="extract-btn">提取内容</button>
+            <button id="replace-btn">正则替换</button>
+            <button id="format-btn">JS格式化</button>
+            <button id="download-btn">下载文件</button>
+            <button id="copy-btn">一键复制</button>
+        </div>
+        <input type="file" id="fileInput" accept=".txt" onchange="displayFileContent(this)">
+        <br>
+        <textarea class="text-area" id="extract-textarea"></textarea>
+    </div>
+    <div class="description">
+        <p>Real</p>
+        <p>本网站用于将源阅读的书源转换为IOS源阅读APP的书源</p>
+        <ul class="link-list">
+            <li>源仓库：<a href="https://www.yckceo.com/yuedu/shuyuan/index.html" target="_blank">https://www.yckceo.com/yuedu/shuyuan/index.html</a></li>
+            <li>猫公子源：<a href="https://yuedu.miaogongzi.net/gx.html" target="_blank">https://yuedu.miaogongzi.net/gx.html</a></li>
+            <li>一程书源：<a href="https://cdn05042023.gitlink.org.cn/api/v1/repos/yi-c/yd/raw/sy.json" target="_blank">https://cdn05042023.gitlink.org.cn/api/v1/repos/yi-c/yd/raw/sy.json</a></li>
+        </ul>
+    </div>
+    <script>
+const urlInput = document.getElementById('url-input');
+const extractBtn = document.getElementById('extract-btn');
+const replaceBtn = document.getElementById('replace-btn');
+const formatBtn = document.getElementById('format-btn');
+const extractTextarea = document.getElementById('extract-textarea');
+const downloadBtn = document.getElementById('download-btn');
+const copyBtn = document.getElementById('copy-btn');
+
+async function fetchContent() {
+    const url = urlInput.value;
+    const response = await fetch(url);
+    const data = await response.text();
+    extractTextarea.value = data;
+}
+
+extractBtn.addEventListener('click', fetchContent);
+
+replaceBtn.addEventListener('click', () => {
+    const text = extractTextarea.value;
+    const replacedText = replaceContent(text);
+   replacedText = replaceContent(text);
+   replacedText = replaceContent(text);
+    extractTextarea.value = replacedText;
+});
+
+formatBtn.addEventListener('click', () => {
+    const jsonText = extractTextarea.value;
+    try {
+        const jsonObject = JSON.parse(jsonText);
+        const formattedJson = JSON.stringify(jsonObject, null, 4);
+        extractTextarea.value = formattedJson;
+    } catch (error) {
+        alert('Invalid JSON');
+    }
+});
+
+function displayFileContent(fileInput) {
+    const file = fileInput.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            extractTextarea.value = e.target.result;
+        };
+        reader.readAsText(file);
+    }
+}
+
+function replaceContent(text) {
+    return text.replace(/(List": ")id\./g, '$1#')
+        .replace(/(List": ")class\./g, '$1.')
+        .replace(/(List": ".*?)@/g, '$1 ',5)
+        .replace(/(List": ".*?)\.0/g, '$1:nth-child(1)')
+        .replace(/(List": ".*?)\.1/g, '$1:nth-child(2)')
+        .replace(/(List": ".*?)\.2/g, '$1:nth-child(3)')
+        .replace(/(List": ".*?)!0/g, '$1:not(:nth-of-type(1))')
+        .replace(/(List": ".*?)!1/g, '$1:not(:nth-of-type(2))');
+}
+
+downloadBtn.addEventListener('click', () => {
+    const textareaContent = extractTextarea.value;
+    const blob = new Blob([textareaContent], { type: 'text/plain' });
+    const urlCreator = window.URL || window.webkitURL;
+    const downloadUrl = urlCreator.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = downloadUrl;
+    a.download = 'output.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+});
+
+copyBtn.addEventListener('click', () => {
+    const textareaContent = extractTextarea.value;
+    navigator.clipboard.writeText(textareaContent);
+    alert('已复制到剪贴板');
+});
+
+
+    </script>
+</body>
+</html>
