@@ -1,6 +1,6 @@
 ---
 css:
-  - custom.css
+  - style/style.css
 ---
 
 # 在线工具
@@ -17,7 +17,7 @@ css:
 | | [https://chat10.free2gpt.xyz/](https://chat10.free2gpt.xyz/ )| 完全免费 无需魔法 无需登录 120次/天 免费|
 | **在线网页设计** | [https://htmlpage.cn/builder/](https://htmlpage.cn/builder/ ) | 无需注册，自己设计，可导入导出源码 |
 | | [http://www.58html.com/html/](http://www.58html.com/html/ )| 可以QQ登录，右键编辑CSS属性，不可以导入源码 |
-| **在线 Markdown** |[https://pandao.github.io/editor.md/](https://pandao.github.io/editor.md/ ) | 开源Editor.md，有各种快捷按键，打开较慢 |
+| **在线Markdown** |[https://pandao.github.io/editor.md/](https://pandao.github.io/editor.md/ ) | 开源Editor.md，有各种快捷按键，打开较慢 |
 | | [https://www.jyshare.com/front-end/712/](https://www.jyshare.com/front-end/712/ ) | 菜鸟工具，简洁无广告，打开较快，引用开源模块 |
 | | [https://www.lddgo.net/string/markdown-editor](https://www.lddgo.net/string/markdown-editor ) | 有其他东西，不影响使用 |
 | **源阅读**|[https://rc.real9.cn/](https://rc.real9.cn/ ) |源阅读书源转换工具 |
