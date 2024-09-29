@@ -24,20 +24,20 @@
 
 以`list:"`开头将`id`转为`#`；将`class`转为`.`；将`a.1@text`转为`a:nth-child(2)@text`；将`a.-1@text`转为`a:nth-last-child(1)@text`；将`a.!1@text`转为`a::not(:nth-of-type(2))@text`；
 从**2024.08.16**开始，需要将 `  "lastUpdateTime": "1727576680671"`删除才可识别书源
-````json
-function replaceContent(text) {
-                for (let i = 0; i < 5; i++) {
-                    text = text
-                        .replace(/(List": ")id\./g, '$1#')
-                        .replace(/(List": ")class\./g, '$1.')
-                        .replace(/(List": ".*?)@/g, '$1 ')
-                        .replace(/(List": ".*?)\.0/g, '$1:nth-child(1)')
-                        .replace(/(List": ".*?)\.1/g, '$1:nth-child(2)')
-                        .replace(/(List": ".*?)\.2/g, '$1:nth-child(3)')
-                        .replace(/(List": ".*?)!0/g, '$1:not(:nth-of-type(1))')
-                        .replace(/(List": ".*?)!1/g, '$1:not(:nth-of-type(2))');
-                }
-                return text;
-            }
-````
+
+
+        function replaceContent(text) {
+                        for (let i = 0; i < 5; i++) {
+                            text = text
+                                .replace(/(List": ")id\./g, '$1#')
+                                .replace(/(List": ")class\./g, '$1.')
+                                .replace(/(List": ".*?)@/g, '$1 ')
+                                .replace(/(List": ".*?)\.0/g, '$1:nth-child(1)')
+                                .replace(/(List": ".*?)\.1/g, '$1:nth-child(2)')
+                                .replace(/(List": ".*?)\.2/g, '$1:nth-child(3)')
+                                .replace(/(List": ".*?)!0/g, '$1:not(:nth-of-type(1))')
+                                .replace(/(List": ".*?)!1/g, '$1:not(:nth-of-type(2))');
+                        }
+                        return text;
+                    }
 Thanks for stopping by! 😁
