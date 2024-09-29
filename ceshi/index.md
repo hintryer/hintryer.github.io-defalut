@@ -11,8 +11,8 @@ css:
 | | [uupoop](https://www.uupoop.com "uupoop") | 简单看作国内版的「Photopea」。下载需要注册 |
 | **一键抠图** | [remove.bg](https://www.remove.bg/zh "remove.bg") | 普通分辨率图片下载免费（无需注册）高分辨率下载需注册（不免费）。中文版容易打不开。 |
 |**AI对话**|[https://codenews.cc/chatgpt](https://codenews.cc/chatgpt )|下面有AI导航网站|
-|  | [https://ai.qdymys.cn/#/](https://ai.qdymys.cn/#/ ) | |
-| | [https://www.zaiwen.top/](https://www.zaiwen.top/ ) | |
+|  | [https://ai.qdymys.cn/#/](https://ai.qdymys.cn/#/ ) |有额度限制 |
+| | [https://www.zaiwen.top/](https://www.zaiwen.top/ ) | 高效问答无限制，非GPT模型，有多种模型|
 | | [https://chatgai.lovepor.cn/](https://chatgai.lovepor.cn/ ) |有额度限制 |
 | | [https://chat10.free2gpt.xyz/](https://chat10.free2gpt.xyz/ )| 完全免费 无需魔法 无需登录 120次/天 免费|
 | **在线网页设计** | [https://htmlpage.cn/builder/](https://htmlpage.cn/builder/ ) | 无需注册，自己设计，可导入导出源码 |
