@@ -5,8 +5,6 @@
   <title>源阅读书源转换工具</title> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css" /> 
   <style>
-       
-       
         #editor {
             border: 3px solid #ccc;
             display: flex;
@@ -17,18 +15,15 @@
             width: 1200px;
             margin: 10px auto;
         }
-
         .input-group {
             margin-bottom: 20px;
         }
-
         .input-group input[type="text"] {
             width: 600px;
             height: 30px;
             padding: 5px;
             border: 1px solid #ccc;
         }
-
         .input-group button {
             height: 30px;
             border: none;
@@ -36,56 +31,45 @@
             background-color: #4CAF50;
             color: #fff;
         }
-
         .input-group button:hover {
             background-color: #3e8e41;
         }
-
         .description {
             text-align: center;
             margin-top: 20px;
             color: #555;
         }
-
         .link-list {
             list-style: none;
             padding: 0;
         }
-
         .link-list li {
             margin-bottom: 10px;
         }
-
         .link-list a {
             color: #007bff;
             text-decoration: none;
         }
-
         .link-list a:hover {
             text-decoration: underline;
         }
-
         h1 {
             text-align: center;
         }
-
         /* Add this to make the layout responsive on mobile devices */
         @media only screen and (max-width: 768px) {
             .container {
                 width: 90%;
                 margin: 20px auto;
             }
-
             .input-group input[type="text"] {
                 width: 80%;
             }
-
             #editor {
                 width: 90%;
                 height: 300px;
             }
         }
-
     </style> 
  </head> 
  <body> 
@@ -132,7 +116,6 @@
             const extractTextarea = document.getElementById('extract-textarea');
             const downloadBtn = document.getElementById('download-btn');
             const copyBtn = document.getElementById('copy-btn');
-
             // 一键复制代码
             copyBtn.addEventListener('click', () => {
                 const code = editor.getValue();
@@ -156,7 +139,6 @@
                 const replacedText = replaceContent(text);
                 editor.setValue(replacedText);
             });
-
             function replaceContent(text) {
                 for (let i = 0; i < 5; i++) {
                     text = text
@@ -195,20 +177,19 @@
 fileInput.addEventListener('change', function(event) {
       const file = event.target.files[0]; // 获取选择的文件
       const reader = new FileReader(); // 创建一个新的 FileReader 对象
-
       reader.onload = function(e) {
         const contents = e.target.result; // 获取文件内容
        console.log(contents);
-editor.setValue=contents;
+editor.setValue=(contents);
       };
       // 读取文件
       reader.readAsText(file);
     });
     </script> 
-  <div id="allow_copycopy-2076e194124e2936e3b3d29ff98f2c4e">
-   <div class="allow_copy_content" style="top: 0px; left: 0px; display: none;">
-    <span>复制</span>
-   </div>
-  </div>
+  <div id="allow_copycopy-2076e194124e2936e3b3d29ff98f2c4e"> 
+   <div class="allow_copy_content" style="top: 0px; left: 0px; display: none;"> 
+    <span>复制</span> 
+   </div> 
+  </div>   
  </body>
 </html>
