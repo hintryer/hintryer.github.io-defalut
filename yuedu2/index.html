@@ -1,10 +1,10 @@
-<html lang="zh-CN"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-    <title>源阅读书源转换工具</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css">
-    <style>
+<html lang="zh-CN">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <title>源阅读书源转换工具</title> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css" /> 
+  <style>
        
        
         #editor {
@@ -86,46 +86,45 @@
             }
         }
 
-    </style>
-</head>
-
-<body>
-    <div id="container">
-        <h1>源阅读书源转换工具</h1>
-        <div class="container">
-            <div class="input-group">
-                <input type="text" id="url-input" placeholder="请输入要提取的网址">
-                <button id="extract-btn">提取内容</button>
-                <input type="file" id="file-input" style="display: none;">
-                <button id="replace-btn">正则替换</button>
-                <button id="format-btn">JS格式化</button>
-                <button id="upload-btn">上传文件</button>
-                <button id="download-btn">下载文件</button>
-                <button id="copy-btn">一键复制</button>
-            </div>
-        </div>
-    </div>
- <textarea id="editor"></textarea>
-    <div class="description">
-        <p>本网站用于将源阅读的书源转换为IOS源阅读APP的书源</p>
-        <ul class="link-list">
-            <li>源仓库：<a href="https://www.yckceo.com/yuedu/shuyuan/index.html" target="_blank">https://www.yckceo.com/yuedu/shuyuan/index.html</a></li>
-            <li>猫公子源：<a href="https://yuedu.miaogongzi.net/gx.html" target="_blank">https://yuedu.miaogongzi.net/gx.html</a></li>
-            <li>一程书源：<a href="https://cdn05042023.gitlink.org.cn/api/v1/repos/yi-c/yd/raw/sy.json" target="_blank">https://cdn05042023.gitlink.org.cn/api/v1/repos/yi-c/yd/raw/sy.json</a></li>
-        </ul>
-    </div>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/mode/javascript/javascript.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/mode/xml/xml.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/mode/htmlmixed/htmlmixed.min.js"></script>
+    </style> 
+ </head> 
+ <body> 
+  <div id="container"> 
+   <h1>源阅读书源转换工具</h1> 
+   <div class="container"> 
+    <div class="input-group"> 
+     <input type="text" id="url-input" placeholder="请输入要提取的网址" /> 
+     <button id="extract-btn">提取内容</button> 
+     <input type="file" id="file-input" style="display: none;" /> 
+     <button id="replace-btn">正则替换</button> 
+     <button id="format-btn">JS格式化</button> 
+     <button id="upload-btn">上传文件</button> 
+     <button id="download-btn">下载文件</button> 
+     <button id="copy-btn">一键复制</button> 
+    </div> 
+   </div> 
+  </div> 
+  <textarea id="editor"></textarea> 
+  <div class="description"> 
+   <p>本网站用于将源阅读的书源转换为IOS源阅读APP的书源</p> 
+   <ul class="link-list"> 
+    <li>源仓库：<a href="https://www.yckceo.com/yuedu/shuyuan/index.html" target="_blank">https://www.yckceo.com/yuedu/shuyuan/index.html</a></li> 
+    <li>猫公子源：<a href="https://yuedu.miaogongzi.net/gx.html" target="_blank">https://yuedu.miaogongzi.net/gx.html</a></li> 
+    <li>一程书源：<a href="https://cdn05042023.gitlink.org.cn/api/v1/repos/yi-c/yd/raw/sy.json" target="_blank">https://cdn05042023.gitlink.org.cn/api/v1/repos/yi-c/yd/raw/sy.json</a></li> 
+   </ul> 
+  </div> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/mode/javascript/javascript.min.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/mode/xml/xml.min.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/mode/htmlmixed/htmlmixed.min.js"></script> 
   <script>
     var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
       mode: "application/ld+json",
       lineNumbers: true,
       theme: "default"  // 选择合适的主题
     });
-  </script>
-    <script>
+  </script> 
+  <script>
             const urlInput = document.getElementById('url-input');
             const extractBtn = document.getElementById('extract-btn');
             const replaceBtn = document.getElementById('replace-btn');
@@ -193,22 +192,22 @@
             uploadBtn.addEventListener('click', () => {
                 fileInput.click();
             });
+fileInput.addEventListener('change', function(event) {
+      const file = event.target.files[0]; // 获取选择的文件
+      const reader = new FileReader(); // 创建一个新的 FileReader 对象
 
-            fileInput.addEventListener('change', () => {
-                const file = fileInput.files[0];
-
-                const reader = new FileReader();
-                reader.onload = () => {
-                    // 创建一个新的文本模型
-                    const model = monaco.editor.createModel(reader.result, 'javascript');
-
-                    // 将新模型设置到编辑器中
-                    editor.setModel(model);
-                };
-                reader.readAsText(file);
-        });
-    </script>
-
-
-
-<div id="allow_copycopy-2076e194124e2936e3b3d29ff98f2c4e"><div class="allow_copy_content" style="top: 0px; left: 0px; display: none;"><span>复制</span></div></div></body></html>
+      reader.onload = function(e) {
+        const contents = e.target.result; // 获取文件内容
+editor.setValue=contents;
+      };
+      // 读取文件
+      reader.readAsText(file);
+    });
+    </script> 
+  <div id="allow_copycopy-2076e194124e2936e3b3d29ff98f2c4e">
+   <div class="allow_copy_content" style="top: 0px; left: 0px; display: none;">
+    <span>复制</span>
+   </div>
+  </div>
+ </body>
+</html>
