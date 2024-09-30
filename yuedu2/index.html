@@ -198,6 +198,7 @@ fileInput.addEventListener('change', function(event) {
 
       reader.onload = function(e) {
         const contents = e.target.result; // 获取文件内容
+       console.log(contents);
 editor.setValue=contents;
       };
       // 读取文件
