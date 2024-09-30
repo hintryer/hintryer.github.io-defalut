@@ -194,7 +194,9 @@
       reader.onload = function(e) {
         const contents = e.target.result; // 获取文件内容
        console.log(contents);
+	   editor.focus();
 	editor.setValue=(contents);
+	      editor.focus();
       };
       // 读取文件
       reader.readAsText(file);
