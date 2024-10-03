@@ -2,7 +2,7 @@
 
 | 内容     | 网址 | 说明 |
 | :----------------------------- | :----------------------------------- | :------------------------------ |
-| **在线PS** | [Photopea](https://www.photopea.com/ "Photopea"){:target="_blank"} | 非常实用的一款在线Photoshop工具，无需注册登录 |
+| **在线PS** | [Photopea](https://www.photopea.com/ "Photopea")| 非常实用的一款在线Photoshop工具，无需注册登录 |
 | | [uupoop](https://www.uupoop.com "uupoop") | 简单看作国内版的「Photopea」。下载需要注册 |
 | **一键抠图** | [remove.bg](https://www.remove.bg/zh "remove.bg") | 普通分辨率图片下载免费（无需注册）高分辨率下载需注册（不免费）。中文版容易打不开。 |
 |**OCR**|[http://web.baimiaopp/com](https://web.baimiaoapp.com/)|白描网页版|
