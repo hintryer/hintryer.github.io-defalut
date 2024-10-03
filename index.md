@@ -5,7 +5,7 @@
 | **在线PS** | [Photopea](https://www.photopea.com/ "Photopea") | 非常实用的一款在线Photoshop工具，无需注册登录 |
 | | [uupoop](https://www.uupoop.com "uupoop") | 简单看作国内版的「Photopea」。下载需要注册 |
 | **一键抠图** | [remove.bg](https://www.remove.bg/zh "remove.bg") | 普通分辨率图片下载免费（无需注册）高分辨率下载需注册（不免费）。中文版容易打不开。 |
-|**图片识别OCR**|[http://web.baimiaopp/com](https://web.baimiaoapp.com/)|白描网页版|
+|**OCR**|[http://web.baimiaopp/com](https://web.baimiaoapp.com/)|白描网页版|
 |**AI对话**|[https://codenews.cc/chatgpt](https://codenews.cc/chatgpt )|下面有AI导航网站|
 | | [https://ai.qdymys.cn/#/](https://ai.qdymys.cn/#/ ) |有额度限制 |
 | | [https://www.zaiwen.top/](https://www.zaiwen.top/ ) | 高效问答无限制，非GPT模型，有多种模型|
