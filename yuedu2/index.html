@@ -20,7 +20,9 @@
             width: 1200px;
             margin: 10px auto;
         }
-
+.hidden {
+            display: none;
+        }
         .input-group {
             margin-bottom: 20px;
         }
@@ -99,6 +101,7 @@
                 height: 300px;
             }
         }
+        
     </style>
 </head>
 
@@ -125,6 +128,17 @@
         <a href="https://cdn05042023.gitlink.org.cn/api/v1/repos/yi-c/yd/raw/sy.json" target="_blank">一程书源直链</a>
         <a href="https://rc.real9.cn/" target="_blank">源阅读书源转换工具</a>
         <a href="https://yuedu.juhua.fun/tool" target="_blank">美化发现工具</a>
+    </div>
+        <p id="toggleBtn">Android阅读书源转换为 iOS 源阅读书源-点击展开说明</p>
+    <div id="hiddenContent" class="hidden">
+        <ul>
+            <li>以 <code>list:"</code> 开头，将 <code>id</code> 转换为 <code>#</code>。</li>
+            <li>将 <code>class</code> 转换为 <code>.</code>。</li>
+            <li>将 <code>a.1@text</code> 转换为 <code>a:nth-child(2)@text</code>。</li>
+            <li>将 <code>a.-1@text</code> 转换为 <code>a:nth-last-child(1)@text</code>。</li>
+            <li>将 <code>a.!1@text</code> 转换为 <code>a::not(:nth-of-type(2))@text</code>。</li>
+            <li>从 2024.08.16 开始，需要将 <code>“lastUpdateTime”: “1727576680671”</code> 删除才能识别书源。</li>
+        </ul>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/lib/codemirror.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/mode/javascript/javascript.min.js"></script>
@@ -210,6 +224,9 @@
                 editor.focus();
             };
             reader.readAsText(file);
+        });
+        document.getElementById('toggleBtn').addEventListener('click', function() {
+            document.getElementById('hiddenContent').classList.toggle('hidden');
         });
     </script>
 </body>
