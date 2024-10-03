@@ -11,13 +11,17 @@
         .CodeMirror {
             border: 3px solid #0e0e0e;
             height: 500px;
-            width: 90%;
+            width: 1200px;
             margin: 10px auto;
         }
 
         .container {
-            width: 90%;
+            width: 1200px;
             margin: 10px auto;
+        }
+
+        .hidden {
+            display: none;
         }
 
         .input-group {
@@ -25,7 +29,7 @@
         }
 
         .input-group input[type="text"] {
-            width: 70%;
+            width: 600px;
             height: 30px;
             padding: 5px;
             border: 1px solid #ccc;
@@ -37,19 +41,21 @@
             border-radius: 5px;
             background-color: #4CAF50;
             color: #fff;
-            margin-right: 5px;
         }
 
         .footer-inner {
             display: flex;
             justify-content: space-around;
             align-items: center;
-            margin-top: 30px;
         }
 
         .footer-inner a {
             text-decoration: none;
             color: #000;
+        }
+
+        .input-group button:hover {
+            background-color: #3e8e41;
         }
 
         h1 {
@@ -67,23 +73,24 @@
         }
 
         #hiddenContent ul {
-
             list-style-type: disc;
             padding-left: 20px;
         }
 
-        .hidden {
-            display: none;
-        }
-
         /* Add this to make the layout responsive on mobile devices */
         @media only screen and (max-width: 768px) {
-            .CodeMirror {
-                height: 300px;
+            .container {
+                width: 90%;
+                margin: 20px auto;
             }
 
             .input-group input[type="text"] {
                 width: 80%;
+            }
+
+            .CodeMirror {
+                width: 90%;
+                height: 300px;
             }
         }
     </style>
@@ -91,15 +98,17 @@
 
 <body>
     <h1>源阅读书源转换工具</h1>
-    <div class="input-group">
-        <input type="text" id="url-input" placeholder="请输入要提取的网址" />
-        <button id="extract-btn">提取内容</button>
-        <input type="file" id="file-input" style="display: none;" />
-        <button id="replace-btn">正则替换</button>
-        <button id="format-btn">JS格式化</button>
-        <button id="upload-btn">上传文件</button>
-        <button id="download-btn">下载文件</button>
-        <button id="copy-btn">一键复制</button>
+    <div class="container">
+        <div class="input-group">
+            <input type="text" id="url-input" placeholder="请输入要提取的网址" />
+            <button id="extract-btn">提取内容</button>
+            <input type="file" id="file-input" style="display: none;" />
+            <button id="replace-btn">正则替换</button>
+            <button id="format-btn">JS格式化</button>
+            <button id="upload-btn">上传文件</button>
+            <button id="download-btn">下载文件</button>
+            <button id="copy-btn">一键复制</button>
+        </div>
     </div>
     <textarea id="editor"></textarea>
     <div class="footer-inner">
@@ -110,7 +119,7 @@
         <a href="https://rc.real9.cn/" target="_blank">源阅读书源转换工具</a>
         <a href="https://yuedu.juhua.fun/tool" target="_blank">美化发现工具</a>
     </div>
-    <p id="toggleBtn">Android阅读书源转换为 iOS 源阅读书源-点击展开说明</p>
+    <p id="toggleBtn">本网站用于将源阅读的书源转换为IOS源阅读APP的书源</p>
     <div id="hiddenContent" class="hidden">
         <ul>
             <li>以 <code>list:"</code> 开头，将 <code>id</code> 转换为 <code>#</code>。</li>
