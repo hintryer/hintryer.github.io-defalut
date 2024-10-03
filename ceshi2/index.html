@@ -1,106 +1,37 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <title>JSON File Replacement Tool</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 30px;
-    }
+    <meta charset="UTF-8">
+    <title>网页内容提取</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#extractBtn').click(function() {
+            var url = $('#urlInput').val();
 
-    h1 {
-      text-align: center;
-      color: #007bff;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 30px;
-    }
-
-    label {
-      margin-bottom: 10px;
-    }
-
-    input[type="text"] {
-      padding: 8px;
-      width: 300px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    button[type="submit"] {
-      padding: 8px 20px;
-      margin-top: 10px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    button[type="submit"]:hover {
-      background-color: #0056b3;
-    }
-
-    #json-result {
-      margin-top: 30px;
-      padding: 16px;
-      background-color: #efefef;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      white-space: pre-wrap;
-    }
-  </style>
+            $.ajax({
+                url: 'extract.php',
+                type: 'POST',
+                data: { url: url },
+                success: function(response) {
+                    $('#title').text(response.title);
+                    $('#content').html(response.content);
+                },
+                error: function() {
+                    alert('发生错误，请重试！');
+                }
+            });
+        });
+    });
+    </script>
 </head>
-
 <body>
-  <h1>JSON File Replacement Tool</h1>
-  <form method="post" action="/submit-json">
-    <input type="hidden" name="_method" value="PUT">
-    <label for="json_url">Enter the URL of the JSON file:</label>
-    <input type="text" id="json_url" name="json_url" required>
-    <button type="submit">Replace and Display</button>
-  </form>
-
-  <div id="json-result"></div>
-
-  <script>
-    const jsonUrl = "https://www.yckceo.com/yuedu/shuyuan/json/id/5696.json";
-
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', jsonUrl, true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-        const jsonResponse = JSON.parse(xhr.responseText);
-
-        // Replace selectors
-        replaceSelectors(jsonResponse);
-
-        // Display the replaced JSON content in the page
-        document.getElementById('json-result').innerHTML = JSON.stringify(jsonResponse, null, 4);
-      } else {
-        alert('Unable to fetch JSON data!');
-      }
-    };
-    xhr.send();
-
-    // Function to replace selectors
-    function replaceSelectors(json) {
-      for (const key in json) {
-        if (json.hasOwnProperty(key)) {
-          const value = json[key];
-
-          if (typeof value === 'string') {
-            json[key] = value.replace(/\.([0-9]+)@/g, ':nth-child($1)@');
-          } else if (typeof value === 'object') {
-            replaceSelectors(value);
-          }
-        }
-      }
-    }
-  </script>
+    <h1>网页内容提取工具</h1>
+    <div>
+        <input type="text" id="urlInput" placeholder="请输入网页链接">
+        <button id="extractBtn">提取内容</button>
+    </div>
+    <h2 id="title"></h2>
+    <div id="content"></div>
 </body>
 </html>
