@@ -31,5 +31,5 @@ css:
 | |[https://freemp3cn.com](https://freemp3cn.com ) | 无限制，搜索下载简单，只一首一首地下载|
 ||[https://tools.liumingye.cn/music](https://tools.liumingye.cn/music )|MyFreeMP3，已关闭新用户注册。无限制，搜索下载简单|
 ||[https://www.toomic.com](https://www.toomic.com )|提供歌词下载，可下低品质音乐|
-||||
+|[测试1](https://hintryer.github.io/ceshi/ "测试1")|[测试2](https://hintryer.github.io/ceshi2/ "测试2")|[测试3](https://hintryer.github.io/ceshi3/ "测试3")|
 ||||
