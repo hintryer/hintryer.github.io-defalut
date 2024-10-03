@@ -25,9 +25,8 @@ css:
 | |[https://yuedu.miaogongzi.net/gx.html](https://yuedu.miaogongzi.net/gx.html ) |猫公子源 |
 | |[https://www.yckceo.com/yuedu/shuyuan/index.html](https://www.yckceo.com/yuedu/shuyuan/index.html ) | 源仓库|
 |**音乐下载** |[https://iui.su/2217/](https://iui.su/2217/) | 来源不死鸟 • 2024 年 09 月 20 日|
-| |[https://freemp3cn.com](https://freemp3cn.com ) | 无限制，搜索下载简单|
-||[https://tools.liumingye.cn/music](https://tools.liumingye.cn/music )|无限制，搜索下载简单|
-||[https://hayqbhgr.slider.kz](https://hayqbhgr.slider.kz )|无限制，搜索下载简单|
+| |[https://freemp3cn.com](https://freemp3cn.com ) | 无限制，搜索下载简单，只一首一首地下载|
+||[https://tools.liumingye.cn/music](https://tools.liumingye.cn/music )|MyFreeMP3，已关闭新用户注册。无限制，搜索下载简单|
 ||[https://www.toomic.com](https://www.toomic.com )|提供歌词下载，可下低品质音乐|
 ||||
 ||||
