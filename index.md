@@ -11,11 +11,13 @@
 | | [https://www.zaiwen.top/](https://www.zaiwen.top/ ) | 高效问答无限制，非GPT模型，有多种模型|
 | | [https://chatgai.lovepor.cn/](https://chatgai.lovepor.cn/ ) |有额度限制 |
 | | [https://chat10.free2gpt.xyz/](https://chat10.free2gpt.xyz/ )| 完全免费 无需魔法 无需登录 120次/天 免费|
-| **网页设计** | [https://htmlpage.cn/builder/](https://htmlpage.cn/builder/ ) | 无需注册，自己设计，可导入导出源码 |
+| **网页设计** | [https://www.jyshare.com/front-end/61/](https://www.jyshare.com/front-end/61/ ) | 菜鸟工具 |
+| | [https://htmlpage.cn/builder/](https://htmlpage.cn/builder/ ) | 无需注册，自己设计，可导入导出源码 |
 | | [http://www.58html.com/html/](http://www.58html.com/html/ )| 可以QQ登录，右键编辑CSS属性，不可以导入源码 |
 | **Markdown**| [https://hintryer.github.io/tool/Markdown.html](https://hintryer.github.io/tool/Markdown.html ) | 自制 Markdown 在线编辑器|
 | |[https://pandao.github.io/editor.md/](https://pandao.github.io/editor.md/ ) | 开源Editor.md，有各种快捷按键，打开较慢 |
 | | [https://www.jyshare.com/front-end/712/](https://www.jyshare.com/front-end/712/ ) | 菜鸟工具，简洁无广告，打开较快，引用开源模块 |
+|**HTML转MD** | [https://www.helloworld.net/html2md](https://www.helloworld.net/html2md ) |开源，也能通过网址直接生成 |
 | | [https://www.lddgo.net/string/markdown-editor](https://www.lddgo.net/string/markdown-editor ) | HTML转Markdown工具，也能通过网址直接生成 |
 | | [https://devtool.tech/html-md](https://devtool.tech/html-md ) | 有其他东西，不影响使用 |
 | **源阅读**|[https://hintryer.github.io/tool/yuedu.html](https://hintryer.github.io/tool/yuedu.html ) |自制 源阅读编辑器 |
