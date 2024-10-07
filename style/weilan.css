@@ -9,6 +9,7 @@
 body {
   margin-top: 0;
   padding: 0;
+   font-size: 16px;
  padding: 30px;
 font-family: ptima-Regular;
 word-break: break-all;
@@ -29,7 +30,7 @@ word-break: break-all;
  */
  table tr th,
  table tr td {
-  color: #424B5D;
+ /* color: #424B5D;*/
   font-size: 16px;
  border: 1px solid #ccc;
   padding: 5px 10px;
