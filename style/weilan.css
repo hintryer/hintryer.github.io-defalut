@@ -212,6 +212,7 @@ word-break: break-all;
     border-left: 1px solid #ccc;
     border-top: 1px solid #ccc;
   padding: 5px 10px;
+   min-width: 85px;
 }
 /* 脚注文字 */
  .footnote-word {
