@@ -6,13 +6,29 @@
  * 英文换行 word-break: break-all;
  */
 
-body {
+body{
   margin-top: 0;
   padding: 0;
    font-size: 16px;
  padding: 30px;
 font-family: ptima-Regular;
 word-break: break-all;
+}
+/* 链接 
+ * border-bottom: 1px solid #009688;
+ */
+a {
+  color: #009688;
+  /*border-bottom: 1px solid #009688;/*链接下划线*/
+   target-name: _blank;/*链接在新窗口中打开*/
+}
+a span {
+  color: #009688;
+  /*border-bottom: 1px solid #009688;/*链接下划线*/
+   target-name: _blank;/*链接在新窗口中打开*/
+}
+ a::before {
+  margin-right: 6px;
 }
 /*
  * 表格
@@ -149,22 +165,6 @@ word-break: break-all;
   font-size: 14px;
   color: #424B5D;
   line-height: 24px;
-}
-/* 链接 
- * border-bottom: 1px solid #009688;
- */
- a{
-  color: #009688;
-  /*border-bottom: 1px solid #009688;/*链接下划线*/
-   target-name: _blank;/*链接在新窗口中打开*/
-}
-a span {
-  color: #009688;
-  /*border-bottom: 1px solid #009688;/*链接下划线*/
-   target-name: _blank;/*链接在新窗口中打开*/
-}
- a::before {
-  margin-right: 6px;
 }
 /* 加粗 */
  strong {
