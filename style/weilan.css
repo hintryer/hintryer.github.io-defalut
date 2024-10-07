@@ -153,7 +153,12 @@ word-break: break-all;
 /* 链接 
  * border-bottom: 1px solid #009688;
  */
- a span {
+ a{
+  color: #009688;
+  /*border-bottom: 1px solid #009688;/*链接下划线*/
+   target-name: _blank;/*链接在新窗口中打开*/
+}
+a span {
   color: #009688;
   /*border-bottom: 1px solid #009688;/*链接下划线*/
    target-name: _blank;/*链接在新窗口中打开*/
