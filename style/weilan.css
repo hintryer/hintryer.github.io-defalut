@@ -20,20 +20,20 @@ body {
  * 字体大小 font-size: 16px;
  * 首行缩进 text-indent: 2em;
  */
-body p {
+ p {
   font-size: 16px;
   line-height: 26px;
   word-spacing: 3px;
   letter-spacing: 1px;
   color: #424B5D;
 }
-body h1, body h2, body h3, body h4, body h5, body h6 {
+ h1,  h2,  h3,  h4,  h5,  h6 {
   margin-top: 24px;
   margin-bottom: 12px;
   font-weight: bold;
 }
 /* 一级标题 */
-body h1 {
+ h1 {
   font-size: 1.8em;
   color: #009688;
  	margin: 1.2em auto;
@@ -41,19 +41,19 @@ body h1 {
   border-bottom: 1px solid #009688;
 }
 /* 一级标题内容 */
-body h1 .content {
+ h1 .content {
 }
 /* 一级标题修饰 请参考有实例的主题 */
-body h1:after {
+ h1:after {
 }
 /* 二级标题 */
-body h2 {
+ h2 {
   font-size: 20px;
   margin-top: 24px;
   margin-bottom: 12px;
 }
 /* 二级标题内容 */
-body h2 .content {
+ h2 .content {
   color: #e7642b;
   text-align: center;
   display: block;
@@ -63,33 +63,33 @@ body h2 .content {
   border-radius: 1px;
 }
 /* 二级标题修饰 请参考有实例的主题 */
-body h2:after {
+ h2:after {
 }
 /* 三级标题 */
-body h3 {
+ h3 {
   font-size: 18px;
   color: #424B5D;
 }
 /* 三级标题内容 */
-body h3 .content {
+ h3 .content {
 }
 /* 三级标题修饰 请参考有实例的主题 */
-body h3:after {
+ h3:after {
 }
 /* 四级标题 */
-body h4 {
+ h4 {
   font-size: 16px;
   color: #424B5D;
 }
 /* 五级标题 */
-body h5 {
+ h5 {
   font-size: 16px;
   color: #424B5D;
 }
 /* 有序、无序列表整体样式
  * list-style-type: square|circle|disc;
  */
-body ul, body ol  {
+ ul,  ol  {
   font-size: 15px;
   margin: 0;
   padding-left: 24px;
@@ -97,7 +97,7 @@ body ul, body ol  {
 }
 /* 列表内容，不要设置li
  */
-body li section {
+ li section {
   margin: 4px 0;
   line-height: 24px;
   color: #424B5D;
@@ -106,14 +106,14 @@ body li section {
 * 左边缘颜色 border-left-color: black;
 * 背景色 background: gray;
 */
-body blockquote {
+ blockquote {
   margin: 0 8px;
   border: none;
   background: #ffffff;
   box-shadow: 0 1px 2px -2px rgba(0,0,0,.16), 0 3px 6px 0 rgba(0,0,0,.12), 0 5px 12px 4px rgba(0,0,0,.09);
 }
 /* 引用文字 */
-body blockquote p {
+ blockquote p {
   font-size: 14px;
   color: #424B5D;
   line-height: 24px;
@@ -121,33 +121,33 @@ body blockquote p {
 /* 链接 
  * border-bottom: 1px solid #009688;
  */
-body a span {
+ a span {
   color: #009688;
   border-bottom: 1px solid #009688;
 }
-body a::before {
+ a::before {
   margin-right: 6px;
 }
 /* 加粗 */
-body strong {
+ strong {
   color: #424B5D;
 }
 /* 斜体 */
-body em {
+ em {
   color: #424B5D;
 }
 /* 加粗斜体 */
-body em strong {
+ em strong {
   color: #424B5D;
 }
 /* 删除线 */
-body del { 
+ del { 
 }
 /* 分隔线
 * 粗细、样式和颜色
 * border-top: 1px solid #3e3e3e;
 */
-body hr {
+ hr {
   border-top: 1px dashed #424B5D;
 }
 /* 图片
@@ -155,18 +155,18 @@ body hr {
 * 居中 margin: 0 auto;
 * 居左 margin: 0 0;
 */
-body img {
+ img {
   border-radius: 5px;
   margin: 12px auto;
 }
 /* 图片描述文字 */
-body figcaption {
+ figcaption {
   font-size: 14px;
   margin: 12px auto;
   color: #999999;
 }
 /* 行内代码 */
-body p code, body li code {
+ p code,  li code {
   padding-left: 0;
   padding-right: 0;
   background: transparent;
@@ -178,17 +178,17 @@ body p code, body li code {
  * 代码块不换行 display: -webkit-box !important;
  * 代码块换行 display: block;
  */
-body pre {
+ pre {
   margin: 12px auto;
   box-shadow: 0 1px 2px -2px rgba(0,0,0,.16), 0 3px 6px 0 rgba(0,0,0,.12), 0 5px 12px 4px rgba(0,0,0,.09) !important;
   border-radius: 5px;
 }
-body pre code {
+ pre code {
 }
 /*
  * 表格
  */
-body table {
+ table {
   margin: 12px auto;
 }
 /*
@@ -197,55 +197,55 @@ body table {
  * 边框 border: 1px solid #ccc;
  * 内边距 padding: 5px 10px;
  */
-body table tr th,
-body table tr td {
+ table tr th,
+ table tr td {
   color: #424B5D;
   font-size: 14px;
 }
 /* 脚注文字 */
-body .footnote-word {
+ .footnote-word {
   color: #eb6161;
 }
 /* 脚注上标 */
-body .footnote-ref {
+ .footnote-ref {
   color: #eb6161;
 }
 /* "参考资料"四个字 
  * 内容 content: "参考资料";
  */
-body .footnotes-sep:before {
+ .footnotes-sep:before {
   font-size: 16px;
 }
 /* 参考资料编号 */
-body .footnote-num {
+ .footnote-num {
 }
 /* 参考资料文字 */
-body .footnote-item p { 
+ .footnote-item p { 
   font-size: 12px;
   color: #424B5D;
 }
 /* 参考资料解释 */
-body .footnote-item p em {
+ .footnote-item p em {
   font-size: 12px;
   color: #999999;
 }
 /* 行间公式
  * 最大宽度 max-width: 300% !important;
  */
-body .block-equation svg {
+ .block-equation svg {
   color: #424B5D;
 }
 /* 行内公式
  */
-body .inline-equation svg {  
+ .inline-equation svg {  
   color: #424B5D;
 }
 
-body .imageflow-layer1 img {
+ .imageflow-layer1 img {
   border-radius: 0;
 }
 
-body .imageflow-caption {
+ .imageflow-caption {
   font-size: 14px;
   margin-top: 8px;
   color: #999999;
