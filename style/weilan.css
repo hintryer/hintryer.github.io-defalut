@@ -86,7 +86,7 @@ a span {
   color: #009688;
  	margin: 1.2em auto;
   text-align: center;
-  border-bottom: 1px solid #009688;
+  /*border-bottom: 1px solid #009688;*/
 }
 /* 一级标题内容 */
  h1 .content {
