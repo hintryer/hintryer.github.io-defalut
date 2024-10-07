@@ -10,6 +10,9 @@
 body {
   margin-top: 0;
   padding: 0;
+ padding: 30px;
+font-family: ptima-Regular;
+word-break: break-all;
 }
 /* 段落，下方未标注标签参数均同此处
  * 上边距 margin-top: 5px;
@@ -21,7 +24,14 @@ body {
  * 首行缩进 text-indent: 2em;
  */
  p {
-  font-size: 16px;
+  margin-top: 5px;
+ margin-bottom: 5px;
+ line-height: 26px;
+ text-align: left;
+ color: #3e3e3e;
+ font-size: 16px;
+ text-indent: 2em;
+   font-size: 16px;
   line-height: 26px;
   word-spacing: 3px;
   letter-spacing: 1px;
@@ -200,8 +210,9 @@ body {
  table tr th,
  table tr td {
   color: #424B5D;
-  font-size: 14px;
-   border: 1px solid #ccc;
+  font-size: 16px;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
   padding: 5px 10px;
 }
 /* 脚注文字 */
