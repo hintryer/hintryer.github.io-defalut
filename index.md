@@ -1,7 +1,4 @@
----
-layout: custom_layout
-title: 在线工具
----
+<link rel="stylesheet" type="text/css" href="style/weilan.css">
 
 | 内容     | 网址 | 说明 |
 | :----------------------------- | :----------------------------------- | :------------------------------ |
