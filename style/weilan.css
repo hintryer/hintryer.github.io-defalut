@@ -5,12 +5,35 @@
  * 全文字体 font-family: ptima-Regular;
  * 英文换行 word-break: break-all;
  */
+
 body {
   margin-top: 0;
   padding: 0;
  padding: 30px;
 font-family: ptima-Regular;
 word-break: break-all;
+}
+/*
+ * 表格
+ */
+ table {
+  margin: 12px auto;
+       border-collapse: collapse; /*使用单一线条的边框*/
+    empty-cells: show; /*单元格无内容依旧绘制边框*/
+}
+/*
+ * 表格内的单元格
+ * 字体大小 font-size: 16px;
+ * 边框 border: 1px solid #ccc;
+ * 内边距 padding: 5px 10px;
+ */
+ table tr th,
+ table tr td {
+  color: #424B5D;
+  font-size: 16px;
+ border: 1px solid;
+  padding: 5px 10px;
+   min-width: 85px;
 }
 /* 段落，下方未标注标签参数均同此处
  * 上边距 margin-top: 5px;
@@ -193,27 +216,7 @@ word-break: break-all;
 }
  pre code {
 }
-/*
- * 表格
- */
- table {
-  margin: 12px auto;
-}
-/*
- * 表格内的单元格
- * 字体大小 font-size: 16px;
- * 边框 border: 1px solid #ccc;
- * 内边距 padding: 5px 10px;
- */
- table tr th,
- table tr td {
-  color: #424B5D;
-  font-size: 16px;
-    border-left: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-  padding: 5px 10px;
-   min-width: 85px;
-}
+
 /* 脚注文字 */
  .footnote-word {
   color: #eb6161;
