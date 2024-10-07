@@ -201,6 +201,8 @@ body {
  table tr td {
   color: #424B5D;
   font-size: 14px;
+   border: 1px solid #ccc;
+  padding: 5px 10px;
 }
 /* 脚注文字 */
  .footnote-word {
