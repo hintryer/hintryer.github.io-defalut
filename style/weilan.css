@@ -31,7 +31,7 @@ word-break: break-all;
  table tr td {
   color: #424B5D;
   font-size: 16px;
- border: 1px solid;
+ border: 1px solid #ccc;
   padding: 5px 10px;
    min-width: 85px;
 }
