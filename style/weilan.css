@@ -20,7 +20,7 @@ word-break: break-all;
 a {
   color: #009688;
   /*border-bottom: 1px solid #009688;/*链接下划线*/
-   target-name: _blank;/*链接在新窗口中打开*/
+text-decoration: none;
 }
 a span {
   color: #009688;
