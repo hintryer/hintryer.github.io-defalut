@@ -1,15 +1,15 @@
 {
     "novels": [
         {
-            "name": "书源",
+            "name": "在线工具",
             "author": "作者A",
             "kind": "奇幻",
             "intro": "这是一本关于探索未知世界的奇幻小说。",
             "bookurl": "/1.json。"
         },
         {
-            "name": "书源",
-            "author": "作者A",
+            "name": "铺货人",
+            "author": "作者B",
             "kind": "奇幻",
             "intro": "这是一本关于探索未知世界的奇幻小说。",
             "bookurl": "/1.json。"
