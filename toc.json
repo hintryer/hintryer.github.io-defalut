@@ -2,11 +2,11 @@
     "Chapterlist": [
         {
             "Chaptername": "第一章 ",
-            "Chapterurl": "shuyuan.json"
+            "Chapterurl": "1.html"
         },
         {
             "Chaptername": "第二章",
-            "Chapterurl": "shuyuan.json"
+            "Chapterurl": "2.html"
         }
     ]
 }
