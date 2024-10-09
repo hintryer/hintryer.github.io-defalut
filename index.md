@@ -25,6 +25,7 @@ title: 在线工具
 | | [https://www.lddgo.net/string/markdown-editor](https://www.lddgo.net/string/markdown-editor ) | 有其他东西，不影响使用|
 |**HTML2MD** | [https://www.helloworld.net/html2md](https://www.helloworld.net/html2md ) |开源，也能通过网址直接生成 |
 | | [https://devtool.tech/html-md](https://devtool.tech/html-md ) |HTML转Markdown工具，也能通过网址直接生成  |
+| | [https://md.weiyan.cc/](https://md.weiyan.cc/ ) |支持自定义样式的 Markdown 编辑器，支持导出 pdf 和 markdown  |
 | **源阅读**|[https://hintryer.github.io/tool/yuedu.html](https://hintryer.github.io/tool/yuedu.html ) |自制 源阅读编辑器 |
 | |[https://rc.real9.cn/](https://rc.real9.cn/ ) |源阅读书源转换工具 |
 | |[https://yuedu.juhua.fun/tool](https://yuedu.juhua.fun/tool ) |美化发现工具 |
@@ -35,4 +36,3 @@ title: 在线工具
 ||[https://tools.liumingye.cn/music](https://tools.liumingye.cn/music )|MyFreeMP3，已关闭新用户注册。无限制，搜索下载简单|
 ||[https://www.toomic.com](https://www.toomic.com )|提供歌词下载，可下低品质音乐|
 |[测试1](https://hintryer.github.io/ceshi/ "测试1")|[测试2](https://hintryer.github.io/ceshi2/ "测试2")|[测试3](https://hintryer.github.io/ceshi3/ "测试3")|
-||||
