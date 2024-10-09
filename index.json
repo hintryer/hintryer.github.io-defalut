@@ -5,16 +5,16 @@
             "author": "作者A",
             "kind": "奇幻",
             "intro": "这是一本关于探索未知世界的奇幻小说。",
-            "bookurl": "toc.json",
-            "tocurl": "toc.json"
+            "bookurl": "toc.html",
+            "tocurl": "toc.html"
         },
         {
             "name": "铺货人",
             "author": "作者B",
             "kind": "奇幻",
             "intro": "这是一本关于探索未知世界的奇幻小说。",
-            "bookurl": "toc.json",
-            "tocurl": "toc.json"
+            "bookurl": "toc.html",
+            "tocurl": "toc.html"
         }
     ],
     "book": [
