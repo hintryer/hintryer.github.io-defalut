@@ -6,7 +6,7 @@
             "kind": "奇幻",
             "intro": "这是一本关于探索未知世界的奇幻小说。",
             "bookurl": "/1.json。"
-            "tocurl": "/tocurl.json。"
+            "tocurl": "tocurl.json。"
         },
         {
             "name": "铺货人",
@@ -14,7 +14,7 @@
             "kind": "奇幻",
             "intro": "这是一本关于探索未知世界的奇幻小说。",
             "bookurl": "/1.json。"
-            "tocurl": "/tocurl.json。"
+            "tocurl": "tocurl.json。"
         }
     ]
 }
