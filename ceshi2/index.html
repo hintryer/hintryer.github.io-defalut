@@ -25,6 +25,11 @@
   <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/addon/fold/xml-fold.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/addon/fold/indent-fold.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/addon/fold/markdown-fold.js"></script>
+  <link rel="stylesheet" href="https://cdn.staticfile.net/codemirror/6.65.7/addon/lint/lint.css">
+  <script src="https://cdn.staticfile.net/codemirror/6.65.7/addon/lint/lint.js"></script>
+  <script src="https://cdn.staticfile.net/codemirror/6.65.7/addon/lint/javascript-lint.js"></script>
+  <script src="https://cdn.staticfile.net/codemirror/6.65.7/addon/lint/html-lint.js"></script>
+  <script src="https://cdn.staticfile.net/codemirror/6.65.7/addon/lint/css-lint.js"></script>
   <link rel="shortcut icon" href="https://img.chkaja.com/63d4f9fc91180b26.png" type="image/x-icon" />
   <style>
     .CodeMirror {
@@ -127,7 +132,8 @@
       styleActiveLine: true, // 当前行背景高亮
       matchBrackets: true, // 括号匹配
       foldGutter: true, //代码折叠
-      gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"], //设置编辑器的侧边栏，例如显示行号、代码折叠等
+      lint: true,
+      gutters: ["CodeMirror-linenumbers", "CodeMirror-lint-markers", "CodeMirror-foldgutter"], //设置编辑器的侧边栏，例如显示行号、代码折叠等
       lineWrapping: true, // 自动换行
       theme: "default",
       value: "Helle World"
