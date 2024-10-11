@@ -1,126 +1,217 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="zh-CN">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>HTML美化工具</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>源阅读书源转换工具</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css" />
+    <link rel="shortcut icon" href="https://img.chkaja.com/63d4f9fc91180b26.png" type="image/x-icon" />
+    <style>
+        .CodeMirror {
+            border: 3px solid #0e0e0e;
+            height: 500px;
+            width: 1200px;
+            margin: 10px auto;
+        }
 
-  <!--  th:block会在links为空时，自动隐藏 -->
-  <link rel="stylesheet" href="/Hui-iconfont/1.0.8/iconfont.css">
-  <link rel="stylesheet" href="https://seehttps.com/h-ui/css/H-ui.min.css">
-  <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.9.0/jquery.min.js"></script>
-  <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/layer/3.5.1/layer.min.js"></script>
-  <!--local-->
+        .container {
+            width: 1200px;
+            margin: 10px auto;
+        }
 
+        .hidden {
+            display: none;
+        }
 
+        .input-group {
+            margin-bottom: 20px;
+        }
 
+        .input-group input[type="text"] {
+            width: 600px;
+            height: 30px;
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
 
+        .input-group button {
+            height: 30px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: #fff;
+        }
 
+        .footer-inner {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            padding: 10px 0;
+        }
 
+        .footer-inner a {
+            text-decoration: none;
+            padding: 5px;
+        }
 
+        .footer-inner a:hover {
+            color: #4CAF50;
+        }
 
+        .input-group button:hover {
+            background-color: #3e8e41;
+        }
 
+        h1 {
+            text-align: center;
+        }
 
+        #toggleBtn {
+            text-align: center;
+            cursor: pointer;
+            margin-top: 20px;
+        }
 
+        #hiddenContent {
+            margin-top: 20px;
+        }
 
+        #hiddenContent ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
 
-  <link href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/8.0.6/swiper-bundle.min.css" rel="stylesheet">
+        /* Add this to make the layout responsive on mobile devices */
 
-  <link href="/assets/css/style.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/layer/3.5.1/theme/default/layer.css?v=3.5.1" id="layuicss-layer">
+        @media only screen and (max-width: 768px) {
+            .container {
+                width: 90%;
+                margin: 20px auto;
+            }
+            .input-group input[type="text"] {
+                width: 80%;
+            }
+            .CodeMirror {
+                width: 90%;
+                height: 300px;
+            }
+        }
+    </style>
 </head>
 
-<body style="zoom: 1;" data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="0">
+<body>
+    <h1>源阅读书源转换工具</h1>
+    <div class="container">
+        <div class="input-group"> <input type="text" id="url-input" placeholder="请输入要提取的网址" /> <button id="extract-btn">提取内容</button> <input type="file" id="file-input" style="display: none;" /> <button id="replace-btn">正则替换</button> <button id="format-btn">JS格式化</button> <button id="upload-btn">上传文件</button> <button id="download-btn">下载文件</button> <button id="copy-btn">一键复制</button> </div>
+    </div> <textarea id="editor"></textarea>
+    <div class="footer-inner"> <a href="https://www.yckceo.com/yuedu/shuyuan/index.html" target="_blank">源仓库</a> <a href="https://yuedu.miaogongzi.net/gx.html" target="_blank">猫公子源</a> <a href="https://www.gitlink.org.cn/yi-c/yd" target="_blank">一程书源</a> <a href="https://cdn05042023.gitlink.org.cn/api/v1/repos/yi-c/yd/raw/sy.json" target="_blank">一程书源直链</a> <a href="https://rc.real9.cn/" target="_blank">源阅读书源转换工具</a> <a href="https://yuedu.juhua.fun/tool" target="_blank">美化发现工具</a> </div>
+    <p id="toggleBtn">本网站用于将源阅读的书源转换为IOS源阅读APP的书源</p>
+    <div id="hiddenContent" class="hidden">
+        <ul>
+            <li>以 <code>list:"</code> 开头，将 <code>id</code> 转换为 <code>#</code>,将 <code>class</code> 转换为 <code>.</code>。</li>
+            <li>将 <code>a.1@text</code> 转换为 <code>a:nth-child(2)@text</code>。</li>
+            <li>将 <code>a.-1@text</code> 转换为 <code>a:nth-last-child(2)@text</code>。</li>
+            <li>将 <code>a.!1@text</code> 转换为 <code>a::not(:nth-of-type(2))@text</code>。</li>
+            <li>从 2024.08.16 开始，需要将 <code>“lastUpdateTime”: “1727576680671”</code> 删除才能识别书源。</li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/lib/codemirror.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-html.min.js"></script>
+    <script>
+        var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+            mode: "application/ld+json",
+            lineNumbers: true,
+            lineWrapping: true,
+            theme: "default",
+            value: "Helle World"
+        });
+        const copyBtn = document.getElementById('copy-btn');
+        const formatBtn = document.getElementById('format-btn');
+        const replaceBtn = document.getElementById('replace-btn');
+        const downloadBtn = document.getElementById('download-btn');
+        const uploadBtn = document.getElementById('upload-btn');
+        const fileInput = document.getElementById('file-input');
+        // 一键复制代码
+        copyBtn.addEventListener('click', () => {
+            const code = editor.getValue();
+            navigator.clipboard.writeText(code);
+            alert('已复制到剪贴板');
+        });
+        // 格式化代码
+        formatBtn.addEventListener('click', () => {
+            const jsonText = editor.getValue();
+            try {
+                const jsonObject = JSON.parse(jsonText);
+                const formattedJson = JSON.stringify(jsonObject, null, 4);
+                editor.setValue(formattedJson);
+            } catch (error) {
+                alert('Invalid JSON');
+            }
+        });
+        // 正则替换代码
+        replaceBtn.addEventListener('click', () => {
+            const text = editor.getValue();
+            const replacedText = replaceContent(text);
+            editor.setValue(replacedText);
+        });
 
-  <main id="main">
-    <section class="breadcrumbs">
-      <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>HTML美化工具</h2>
-          <ol>
-            <li><a href="/">首页</a></li>
-            <li><a href="/tools">工具中心</a></li>
-            <li>HTML美化工具</li>
-          </ol>
-        </div>
-      </div>
-    </section>
-
-    <section id="portfolio-details" class="portfolio-details">
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-6">
-            <div class="portfolio-details-slider swiper">
-              <div class="swiper-slide">
-                <div class="form form-horizontal" id="form-tools">
-
-                  <div class="row cl">
-                    <label class="form-label col-xs-2 col-sm-2"><span class="c-red">*</span>内容：</label>
-                    <div class="formControls col-xs-10 col-sm-10">
-                      <textarea name="source" id="source" style="height:400px" class="textarea" placeholder="请输入待美化的CSS代码"></textarea>
-                    </div>
-                  </div>
-
-                  <div class="row cl">
-                    <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                      <button onclick="ajax_post('encode');" class="Hui_btn Hui_btn-primary radius" type="submit"><i class="Hui-iconfont"></i> 美化</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                      <button onclick="ajax_post('reset');" class="Hui_btn Hui_btn-danger radius" type="submit"><i class="Hui-iconfont"></i> 重置</button>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="portfolio-details-slider swiper">
-              <div class="swiper-slide">
-                <div class="form form-horizontal" id="form-tools2">
-                  <div class="row cl">
-                    <label class="form-label col-xs-2 col-sm-2">结果：</label>
-                    <div class="formControls col-xs-10 col-sm-10">
-                      <textarea name="result" id="result" style="height:400px" class="textarea" placeholder="此处显示美化后的HTML代码"></textarea>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-
-
-  <script src="https://seehttps.com/FileFormat/js/beautify-html.min.js"></script>
-  <script src="/self/js/protect.js"></script>
-  <script type="text/javascript">
-    window.onload = function(){document.getElementById("tools").classList.add("active");}
-    function ajax_post(obj)
-    {
-        if(obj==='reset')
-        {
-            document.getElementById('source').value='';
-            document.getElementById('result').value='';
-            return false;
+        function replaceContent(text) {
+            for (let i = 0; i < 5; i++) {
+                text = text.replace(/(List": ")id\./g, '$1#').replace(/(List": ")class\./g, '$1.').replace(/(List": ".*?)@/g, '$1 ').replace(/(List": ".*?)\.0/g, '$1:nth-child(1)').replace(/(List": ".*?)\.1/g, '$1:nth-child(2)').replace(/(List": ".*?)\.2/g, '$1:nth-child(3)').replace(/(List": ".*?)!0/g, '$1:not(:nth-of-type(1))').replace(/(List": ".*?)!1/g, '$1:not(:nth-of-type(2)').replace(/.*lastUpdateTime.*/g, '');
+            }
+            return text;
         }
-        const source = $("#source").val();
-        if(source === '')
-        {
-            layer.msg('待美化的HTML内容不能为空！', {icon: 2,time: 2000});
-            return false;
+        // 一键下载代码
+        downloadBtn.addEventListener('click', () => {
+            const textareaContent = editor.getValue();
+            const blob = new Blob([textareaContent], {
+                type: 'text/plain'
+            });
+            const urlCreator = window.URL || window.webkitURL;
+            const downloadUrl = urlCreator.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = downloadUrl;
+            a.download = 'output.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+        // 上传文件代码
+        uploadBtn.addEventListener('click', () => {
+            beautify();
+        });
+
+        function beautify() {
+            var source = editor.getValue(),
+                output,
+                opts = {
+                    "indent_size": 2, //all,缩进尺寸，默认4
+                    "max_preserve_newlines": -1, //允许标记之间n个换行符，默认10
+                    "wrap_line_length": 0, //在 n 个字符之后换行(设置为0忽略换行)
+                }
+            output = html_beautify(source, opts);
+            editor.setValue(output);
         }
-    
-        const options = { indent_size: 2, space_in_empty_paren: true }
-        document.getElementById('result').value=html_beautify(source, options);
-        return true;
-    }
-  </script>
-  <div id="allow_copycopy-2076e194124e2936e3b3d29ff98f2c4e">
-    <div class="allow_copy_content" style="top: 0px; left: 0px; display: none;"><span>复制</span></div>
-  </div>
+        fileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const contents = e.target.result;
+                console.log(contents);
+                editor.setValue(contents);
+                editor.refresh();
+                editor.focus();
+            };
+            reader.readAsText(file);
+        });
+        document.getElementById('toggleBtn').addEventListener('click', function() {
+            document.getElementById('hiddenContent').classList.toggle('hidden');
+        });
+    </script>
 </body>
 
 </html>
