@@ -1,37 +1,126 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>网页内容提取</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-    $(document).ready(function() {
-        $('#extractBtn').click(function() {
-            var url = $('#urlInput').val();
+<html lang="en">
 
-            $.ajax({
-                url: 'extract.php',
-                type: 'POST',
-                data: { url: url },
-                success: function(response) {
-                    $('#title').text(response.title);
-                    $('#content').html(response.content);
-                },
-                error: function() {
-                    alert('发生错误，请重试！');
-                }
-            });
-        });
-    });
-    </script>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>HTML美化工具</title>
+
+  <!--  th:block会在links为空时，自动隐藏 -->
+  <link rel="stylesheet" href="/Hui-iconfont/1.0.8/iconfont.css">
+  <link rel="stylesheet" href="https://seehttps.com/h-ui/css/H-ui.min.css">
+  <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/1.9.0/jquery.min.js"></script>
+  <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/layer/3.5.1/layer.min.js"></script>
+  <!--local-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/8.0.6/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="/assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/layer/3.5.1/theme/default/layer.css?v=3.5.1" id="layuicss-layer">
 </head>
-<body>
-    <h1>网页内容提取工具</h1>
-    <div>
-        <input type="text" id="urlInput" placeholder="请输入网页链接">
-        <button id="extractBtn">提取内容</button>
-    </div>
-    <h2 id="title"></h2>
-    <div id="content"></div>
+
+<body style="zoom: 1;" data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="0">
+
+  <main id="main">
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>HTML美化工具</h2>
+          <ol>
+            <li><a href="/">首页</a></li>
+            <li><a href="/tools">工具中心</a></li>
+            <li>HTML美化工具</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-6">
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-slide">
+                <div class="form form-horizontal" id="form-tools">
+
+                  <div class="row cl">
+                    <label class="form-label col-xs-2 col-sm-2"><span class="c-red">*</span>内容：</label>
+                    <div class="formControls col-xs-10 col-sm-10">
+                      <textarea name="source" id="source" style="height:400px" class="textarea" placeholder="请输入待美化的CSS代码"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="row cl">
+                    <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                      <button onclick="ajax_post('encode');" class="Hui_btn Hui_btn-primary radius" type="submit"><i class="Hui-iconfont"></i> 美化</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                      <button onclick="ajax_post('reset');" class="Hui_btn Hui_btn-danger radius" type="submit"><i class="Hui-iconfont"></i> 重置</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-slide">
+                <div class="form form-horizontal" id="form-tools2">
+                  <div class="row cl">
+                    <label class="form-label col-xs-2 col-sm-2">结果：</label>
+                    <div class="formControls col-xs-10 col-sm-10">
+                      <textarea name="result" id="result" style="height:400px" class="textarea" placeholder="此处显示美化后的HTML代码"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+
+  <script src="https://seehttps.com/FileFormat/js/beautify-html.min.js"></script>
+  <script src="/self/js/protect.js"></script>
+  <script type="text/javascript">
+    window.onload = function(){document.getElementById("tools").classList.add("active");}
+    function ajax_post(obj)
+    {
+        if(obj==='reset')
+        {
+            document.getElementById('source').value='';
+            document.getElementById('result').value='';
+            return false;
+        }
+        const source = $("#source").val();
+        if(source === '')
+        {
+            layer.msg('待美化的HTML内容不能为空！', {icon: 2,time: 2000});
+            return false;
+        }
+    
+        const options = { indent_size: 2, space_in_empty_paren: true }
+        document.getElementById('result').value=html_beautify(source, options);
+        return true;
+    }
+  </script>
+  <div id="allow_copycopy-2076e194124e2936e3b3d29ff98f2c4e">
+    <div class="allow_copy_content" style="top: 0px; left: 0px; display: none;"><span>复制</span></div>
+  </div>
 </body>
+
 </html>
