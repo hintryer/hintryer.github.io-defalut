@@ -112,12 +112,12 @@
   <textarea id="editor"></textarea>
   <div class="footer-inner">
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/lib/codemirror.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/lib/codemirror.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/addon/edit/matchbrackets.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/mode/xml/xml.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/mode/javascript/javascript.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/mode//css/css.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/mode/vbscript/vbscript.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/mode/htmlmixed/htmlmixed.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/mode/javascript/javascript.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/mode/css/css.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/mode/htmlmixed/htmlmixed.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-css.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-html.min.js"></script>
@@ -127,6 +127,7 @@
       lineNumbers: true,
       lineWrapping: true,
       theme: "default",
+      matchBrackets: true, //括号匹配
       value: "Helle World"
     });
     const copyBtn = document.getElementById('copy-btn');
