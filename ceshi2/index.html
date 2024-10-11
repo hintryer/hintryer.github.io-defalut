@@ -24,27 +24,22 @@
       width: 1200px;
       margin: 10px auto;
     }
-
     .container {
       width: 1200px;
       margin: 10px auto;
     }
-
     .hidden {
       display: none;
     }
-
     .input-group {
       margin-bottom: 20px;
     }
-
     .input-group input[type="text"] {
       width: 600px;
       height: 30px;
       padding: 5px;
       border: 1px solid #ccc;
     }
-
     .input-group button {
       height: 30px;
       border: none;
@@ -52,57 +47,46 @@
       background-color: #4CAF50;
       color: #fff;
     }
-
     .footer-inner {
       display: flex;
       justify-content: center;
       margin-top: 10px;
       padding: 10px 0;
     }
-
     .footer-inner a {
       text-decoration: none;
       padding: 5px;
     }
-
     .footer-inner a:hover {
       color: #4CAF50;
     }
-
     .input-group button:hover {
       background-color: #3e8e41;
     }
-
     h1 {
       text-align: center;
     }
-
     #toggleBtn {
       text-align: center;
       cursor: pointer;
       margin-top: 20px;
     }
-
     #hiddenContent {
       margin-top: 20px;
     }
-
     #hiddenContent ul {
       list-style-type: disc;
       padding-left: 20px;
     }
-
     /* Add this to make the layout responsive on mobile devices */
     @media only screen and (max-width: 768px) {
       .container {
         width: 90%;
         margin: 20px auto;
       }
-
       .input-group input[type="text"] {
         width: 80%;
       }
-
       .CodeMirror {
         width: 90%;
         height: 300px;
@@ -189,6 +173,11 @@
           "preserve_newlines": false, //all,保留空行，默认“true”（保留换行符）
           "html": {
             "extra_liners": "", //配置标签列表，需要在这些标签前面额外加一空白行（换行符）
+          },
+          "css": {
+            "newline_between_rules": false, //在css规则之间添加一个换行符，默认为false
+            "selector_separator_newline": false, //在多个选择器之间加一个换行符
+            "space_around_combinator": false, //确保选择器分隔符周围的空间 (>+~)
           }
         }
       output = html_beautify(source, opts);
