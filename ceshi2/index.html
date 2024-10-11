@@ -194,21 +194,6 @@
       output = html_beautify(source, opts);
       editor.setValue(output);
     }
-    fileInput.addEventListener('change', function(event) {
-      const file = event.target.files[0];
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const contents = e.target.result;
-        console.log(contents);
-        editor.setValue(contents);
-        editor.refresh();
-        editor.focus();
-      };
-      reader.readAsText(file);
-    });
-    document.getElementById('toggleBtn').addEventListener('click', function() {
-      document.getElementById('hiddenContent').classList.toggle('hidden');
-    });
   </script>
 </body>
 </html>
