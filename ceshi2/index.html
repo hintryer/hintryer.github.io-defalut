@@ -71,27 +71,28 @@
       theme: "default",
       value: "Helle World"
     });
-    // Initialize ClipboardJS
-    var clipboard = new ClipboardJS("#copy", {
-      text: function() {
-        var value = editor.getValue(); //重写clipboard粘贴的文本
-        return value;
-      }
-    });
-    // Log copy success or error
-    clipboard.on("success", function(e) {
-      document.getElementById("copy").value = "复制成功";
-      e.clearSelection();
-      setTimeout(function() {
-        document.getElementById("copy").value = "复制";
-      }, 3000);
-    });
-    clipboard.on("error", function(e) {
-      document.getElementById("copy").value = "复制失败";
-      setTimeout(function() {
-        document.getElementById("copy").value = "复制";
-      }, 3000);
-    });
+// Initialize ClipboardJS
+var clipboard = new ClipboardJS("#copy", {
+  text: function() {
+    return editor.getValue(); // 返回编辑器中的文本作为要复制的内容
+  }
+});
+
+// 复制成功和失败时的处理
+var copyButton = document.getElementById("copy");
+clipboard.on("success", function(e) {
+  copyButton.value = "复制成功";
+  e.clearSelection();
+  setTimeout(function() {
+    copyButton.value = "复制";
+  }, 1000);
+});
+clipboard.on("error", function(e) {
+  copyButton.value = "复制失败";
+  setTimeout(function() {
+    copyButton.value = "复制";
+  }, 1000);
+});
     const formatBtn = document.getElementById('format-btn');
     const replaceBtn = document.getElementById('replace-btn');
     const downloadBtn = document.getElementById('download-btn');
