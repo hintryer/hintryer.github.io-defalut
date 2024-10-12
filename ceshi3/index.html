@@ -9,12 +9,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-css.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-html.min.js"></script>
   <style>
-    #editor {
-      border: 3px solid #0e0e0e;
-      font-size: 16px;
-      height: 600px;
-      margin: 10px auto;
-    }
     body {
       margin-top: 0;
       padding: 0;
@@ -22,6 +16,12 @@
       padding: 30px;
       font-family: ptima-Regular;
       word-break: break-all;
+    }
+    #editor {
+      border: 3px solid #0e0e0e;
+      font-size: 16px;
+      height: 600px;
+      margin: 10px auto;
     }
     h1 {
       text-align: center;
@@ -34,7 +34,7 @@
   <button id="htmlformat-btn">HTML美化</button>
   <button id="download-btn">下载文件</button>
   <input id="copy" type="button" value="复制">
-  <div id="editor">Enter your code here</div>
+  <div id="editor">//Enter your code here</div>
   <script>
     var editor = ace.edit("editor"); // 将"editor"作为参数传递给ace.edit()函数
     editor.setTheme("ace/theme/github"); //设置主题
