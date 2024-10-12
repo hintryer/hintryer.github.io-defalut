@@ -44,7 +44,6 @@
     h1 {
       text-align: center;
     }
-    }
   </style>
 </head>
 <body>
@@ -60,7 +59,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-css.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-html.min.js"></script>
   <script>
-    
     var editor = CodeMirror.fromTextArea(document.getElementById("textarea"), {
       mode: 'htmlmixed', // HMTL混合模式
       lineNumbers: true, // 显示行号
@@ -84,15 +82,15 @@
     clipboard.on("success", function(e) {
       document.getElementById("copy").value = "复制成功";
       e.clearSelection();
-setTimeout(function() {
-  document.getElementById("copy").value = "复制";
-}, 3000);
+      setTimeout(function() {
+        document.getElementById("copy").value = "复制";
+      }, 3000);
     });
     clipboard.on("error", function(e) {
       document.getElementById("copy").value = "复制失败";
-setTimeout(function() {
-  document.getElementById("copy").value = "复制";
-}, 3000);
+      setTimeout(function() {
+        document.getElementById("copy").value = "复制";
+      }, 3000);
     });
     const formatBtn = document.getElementById('format-btn');
     const replaceBtn = document.getElementById('replace-btn');
@@ -150,7 +148,6 @@ setTimeout(function() {
       output = html_beautify(source, opts);
       editor.setValue(output);
     }
-  
   </script>
 </body>
 </html>
