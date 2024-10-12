@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -33,6 +34,7 @@
   <script src="https://cdn.staticfile.net/codemirror/6.65.7/addon/lint/html-lint.js"></script>
   <script src="https://cdn.staticfile.net/codemirror/6.65.7/addon/lint/css-lint.js"></script>
   <link rel="shortcut icon" href="https://img.chkaja.com/63d4f9fc91180b26.png" type="image/x-icon" />
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
   <style>
     .CodeMirror {
       border: 3px solid #0e0e0e;
@@ -113,22 +115,20 @@
 </head>
 <body>
   <h1>代码格式化工具</h1>
-  <div class="container">
-    <div class="input-group">
       <button id="format-btn">JS格式化</button>
       <button id="upload-btn">HTML美化</button>
       <button id="download-btn">下载文件</button>
       <button id="copy-btn">一键复制</button>
-    </div>
-  </div>
-  <textarea id="editor"></textarea>
+        <input id="copy" type="button"  value="复制">
+  <textarea id="textarea"></textarea>
+
   <div class="footer-inner">
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-css.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-html.min.js"></script>
   <script>
-    var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+    var editor = CodeMirror.fromTextArea(document.getElementById("textarea"), {
       mode: 'htmlmixed', // HMTL混合模式
       lineNumbers: true, // 显示行号
       styleActiveLine: true, // 当前行背景高亮
@@ -139,6 +139,22 @@
       lineWrapping: true, // 自动换行
       theme: "default",
       value: "Helle World"
+    });
+    // Initialize ClipboardJS
+    var clipboard = new ClipboardJS("#copy", {
+ text: function () {
+        var value = editor.getValue();//重写clipboard粘贴的文本
+        return value;}
+    });
+
+    // Log copy success or error
+    clipboard.on("success", function(e) {
+      document.getElementById("copy").value="复制成功";
+      e.clearSelection();
+    });
+
+    clipboard.on("error", function(e) {
+      document.getElementById("copy").value="复制失败";
     });
     const copyBtn = document.getElementById('copy-btn');
     const formatBtn = document.getElementById('format-btn');
