@@ -40,7 +40,8 @@
     editor.setTheme("ace/theme/github"); //设置主题
     editor.session.setMode("ace/mode/javascript"); //设置程序语言模式
     editor.getSession().setUseWrapMode(true); //设置自动换行
-    editor.setFontSize(16) // 设置字体16px
+    editor.setFontSize(16); // 设置字体16px
+    editor.setShowPrintMargin(false); //设置打印边距可见性，去除视图中有一条垂直线
     // Initialize ClipboardJS
     var clipboard = new ClipboardJS("#copy", {
       text: function() {
