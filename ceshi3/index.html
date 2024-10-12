@@ -42,6 +42,7 @@
     editor.getSession().setUseWrapMode(true); //设置自动换行
     editor.setFontSize(16); // 设置字体16px
     editor.setShowPrintMargin(false); //设置打印边距可见性，去除视图中有一条垂直线
+    editor.getSession().setUseWorker(false); //禁用语法检查,仅支持JavaScript，json，php，coffeescript，css，xquery
     // Initialize ClipboardJS
     var clipboard = new ClipboardJS("#copy", {
       text: function() {
