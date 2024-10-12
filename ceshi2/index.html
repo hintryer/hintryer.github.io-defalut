@@ -116,10 +116,9 @@
 <body>
   <h1>代码格式化工具</h1>
       <button id="format-btn">JS格式化</button>
-      <button id="upload-btn">HTML美化</button>
+      <button id="htmlformat-btn">HTML美化</button>
       <button id="download-btn">下载文件</button>
-      <button id="copy-btn">一键复制</button>
-        <input id="copy" type="button"  value="复制">
+      <input id="copy" type="button"  value="复制">
   <textarea id="textarea"></textarea>
 
   <div class="footer-inner">
@@ -156,18 +155,11 @@
     clipboard.on("error", function(e) {
       document.getElementById("copy").value="复制失败";
     });
-    const copyBtn = document.getElementById('copy-btn');
     const formatBtn = document.getElementById('format-btn');
     const replaceBtn = document.getElementById('replace-btn');
     const downloadBtn = document.getElementById('download-btn');
-    const uploadBtn = document.getElementById('upload-btn');
+    const htmlformatBtn = document.getElementById('htmlformat-btn');
     const fileInput = document.getElementById('file-input');
-    // 一键复制代码
-    copyBtn.addEventListener('click', () => {
-      const code = editor.getValue();
-      navigator.clipboard.writeText(code);
-      alert('已复制到剪贴板');
-    });
     // 格式化代码
     formatBtn.addEventListener('click', () => {
       const jsonText = editor.getValue();
@@ -195,7 +187,7 @@
       document.body.removeChild(a);
     });
     // 上传文件代码
-    uploadBtn.addEventListener('click', () => {
+    htmlformatBtn.addEventListener('click', () => {
       beautify();
     });
 
