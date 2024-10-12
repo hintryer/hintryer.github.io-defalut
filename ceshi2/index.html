@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>代码格式化工具</title>
   <!-- 引入CodeMirror核心文件 -->
   <script src="https://cdn.jsdelivr.net/npm/htmlhint/dist/htmlhint.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/lib/codemirror.css" rel="stylesheet" type="text/css">
@@ -26,13 +25,16 @@
   <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/addon/fold/xml-fold.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/addon/fold/indent-fold.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.0/addon/fold/markdown-fold.js"></script>
+  <!--支持语法检验-->
   <link rel="stylesheet" href="https://cdn.staticfile.net/codemirror/6.65.7/addon/lint/lint.css">
   <script src="https://cdn.staticfile.net/codemirror/6.65.7/addon/lint/lint.js"></script>
   <script src="https://cdn.staticfile.net/codemirror/6.65.7/addon/lint/javascript-lint.js"></script>
   <script src="https://cdn.staticfile.net/codemirror/6.65.7/addon/lint/html-lint.js"></script>
   <script src="https://cdn.staticfile.net/codemirror/6.65.7/addon/lint/css-lint.js"></script>
-  <link rel="shortcut icon" href="https://img.chkaja.com/63d4f9fc91180b26.png" type="image/x-icon" />
+  <!--添加clipboard库-->
   <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+  <link rel="shortcut icon" href="https://img.chkaja.com/63d4f9fc91180b26.png" type="image/x-icon" />
+  <title>代码格式化工具</title>
   <style>
     .CodeMirror {
       border: 3px solid #0e0e0e;
@@ -53,8 +55,7 @@
   <button id="download-btn">下载文件</button>
   <input id="copy" type="button" value="复制">
   <textarea id="textarea"></textarea>
-  <div class="footer-inner">
-  </div>
+  <div class="footer-inner"></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-css.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-html.min.js"></script>
@@ -71,34 +72,32 @@
       theme: "default",
       value: "Helle World"
     });
-// Initialize ClipboardJS
-var clipboard = new ClipboardJS("#copy", {
-  text: function() {
-    return editor.getValue(); // 返回编辑器中的文本作为要复制的内容
-  }
-});
-
-// 复制成功和失败时的处理
-var copyButton = document.getElementById("copy");
-clipboard.on("success", function(e) {
-  copyButton.value = "复制成功";
-  e.clearSelection();
-  setTimeout(function() {
-    copyButton.value = "复制";
-  }, 1000);
-});
-clipboard.on("error", function(e) {
-  copyButton.value = "复制失败";
-  setTimeout(function() {
-    copyButton.value = "复制";
-  }, 1000);
-});
+    // Initialize ClipboardJS
+    var clipboard = new ClipboardJS("#copy", {
+      text: function() {
+        return editor.getValue(); // 返回编辑器中的文本作为要复制的内容
+      }
+    });
+    // 复制成功和失败时的处理
+    var copyButton = document.getElementById("copy");
+    clipboard.on("success", function(e) {
+      copyButton.value = "复制成功";
+      e.clearSelection();
+      setTimeout(function() {
+        copyButton.value = "复制";
+      }, 1000);
+    });
+    clipboard.on("error", function(e) {
+      copyButton.value = "复制失败";
+      setTimeout(function() {
+        copyButton.value = "复制";
+      }, 1000);
+    });
     const formatBtn = document.getElementById('format-btn');
     const replaceBtn = document.getElementById('replace-btn');
     const downloadBtn = document.getElementById('download-btn');
     const htmlformatBtn = document.getElementById('htmlformat-btn');
-    const fileInput = document.getElementById('file-input');
-    // 格式化代码
+    // JS格式化代码
     formatBtn.addEventListener('click', () => {
       const jsonText = editor.getValue();
       try {
@@ -124,7 +123,7 @@ clipboard.on("error", function(e) {
       a.click();
       document.body.removeChild(a);
     });
-    // 上传文件代码
+    // html格式化代码
     htmlformatBtn.addEventListener('click', () => {
       beautify();
     });
