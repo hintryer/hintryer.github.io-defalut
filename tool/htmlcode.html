@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>代码格式化工具</title>
+  <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.4.12/src/ace.js" type="text/javascript" charset="utf-8"></script>
+  <!--添加clipboard库-->
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-html.min.js"></script>
+  <style>
+    body {
+      margin-top: 0;
+      padding: 0;
+      font-size: 16px;
+      padding: 30px;
+      font-family: ptima-Regular;
+      word-break: break-all;
+    }
+    #editor {
+      border: 3px solid #0e0e0e;
+      font-size: 16px;
+      height: 600px;
+      margin: 10px auto;
+    }
+    h1 {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>代码格式化工具</h1>
+  <button id="format-btn">JS格式化</button>
+  <button id="htmlformat-btn">HTML美化</button>
+  <button id="download-btn">下载文件</button>
+  <input id="copy" type="button" value="复制">
+  <div id="editor">//Enter your code here</div>
+  <script>
+    var editor = ace.edit("editor"); // 将"editor"作为参数传递给ace.edit()函数
+    editor.setTheme("ace/theme/github"); //设置主题
+    editor.session.setMode("ace/mode/javascript"); //设置程序语言模式
+    editor.getSession().setUseWrapMode(true); //设置自动换行
+    editor.setFontSize(16); // 设置字体16px
+    editor.setShowPrintMargin(false); //设置打印边距可见性，去除视图中有一条垂直线
+    editor.getSession().setUseWorker(false); //禁用语法检查,仅支持JavaScript，json，php，coffeescript，css，xquery
+    // Initialize ClipboardJS
+    var clipboard = new ClipboardJS("#copy", {
+      text: function() {
+        return editor.getValue(); // 返回编辑器中的文本作为要复制的内容
+      }
+    });
+    // 复制成功和失败时的处理
+    var copyButton = document.getElementById("copy");
+    clipboard.on("success", function(e) {
+      copyButton.value = "复制成功";
+      e.clearSelection();
+      setTimeout(function() {
+        copyButton.value = "复制";
+      }, 1000);
+    });
+    clipboard.on("error", function(e) {
+      copyButton.value = "复制失败";
+      setTimeout(function() {
+        copyButton.value = "复制";
+      }, 1000);
+    });
+    const htmlformatBtn = document.getElementById('htmlformat-btn');
+    // html格式化代码
+    htmlformatBtn.addEventListener('click', () => {
+      beautify();
+    });
+
+    function beautify() {
+      var source = editor.getValue(),
+        output,
+        opts = {
+          "indent_size": 2, //all,缩进尺寸，默认4
+          "max_preserve_newlines": -1, //允许标记之间n个换行符，默认10
+          "wrap_line_length": 0, //在 n 个字符之后换行(设置为0忽略换行)
+          "preserve_newlines": false, //all,保留空行，默认“true”（保留换行符）
+          "html": {
+            "extra_liners": "", //配置标签列表，需要在这些标签前面额外加一空白行（换行符）
+          },
+          "css": {
+            "newline_between_rules": false, //在css规则之间添加一个换行符，默认为false
+            "selector_separator_newline": false, //在多个选择器之间加一个换行符
+            "space_around_combinator": false, //确保选择器分隔符周围的空间 (>+~)
+          }
+        }
+      output = html_beautify(source, opts);
+      editor.setValue(output);
+    }
+  </script>
+</body>
+</html>
