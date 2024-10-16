@@ -205,12 +205,10 @@ a span {
 }
 /* 行内代码 */
  p code,  li code {
-  padding-left: 0;
-  padding-right: 0;
-  background: transparent;
-  border-radius: 0;
-  color: #eb6161;
-  border-bottom: 1px solid #eb6161;
+    padding: 2px 6px;
+    border-radius: 6px;
+    color: rgba(0, 0, 0, 0.8);
+    background-color: #f7f7f9;
 }
 /* 非微信代码块
  * 代码块不换行 display: -webkit-box !important;
