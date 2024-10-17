@@ -45,5 +45,8 @@ codeBlocks.forEach(function(codeBlock) {
 
     // 修改复制按钮文本为“已复制”
     this.textContent = '复制成功';
+    setTimeout(()=> {
+        this.textContent = '复制代码';
+    },1500);
   });
 });
