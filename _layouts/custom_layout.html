@@ -2,16 +2,19 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <head><base target="_blank"></head>
+  <head>
+    <base target="_blank">
+  </head>
   <link rel="stylesheet" type="text/css" href="https://hintryer.github.io/style/weilan.css">
-
-  <title>{{ page.title }}</title>
+  <!--Copy code-延迟执行，直到整个页面都加载完成->
+   <link rel="stylesheet" type="text/css"  href="https://hintryer.github.io/style/copy.css"/>
+   <script defer src="https://hintryer.github.io/style/copy.js"></script>
+  <!--/Copy code-->
+  <title>
+    {{ page.title }}
+  </title>
 </head>
 <body>
   {{ content }}
 </body>
-    <!--Copy code-不能放到最前面否则找不pre->
- <link href="https://hintryer.github.io/style/copy.css" rel="stylesheet"/>
- <script src="https://hintryer.github.io/style/copy.js"></script>
-<!--/Copy code-->
 </html>
