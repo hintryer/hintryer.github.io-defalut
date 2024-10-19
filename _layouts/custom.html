@@ -50,8 +50,7 @@ const catalogTrack = () => {
 		}
 		$currentHeading = $heading;
 	}
-};
-const anchorName = $currentHeading.attr('id');
+	const anchorName = $currentHeading.attr('id');
 const $catalog = $(`.catalog[name="${anchorName}"]`);
 if (!$catalog.hasClass('catalog-active')) {
 	$('.catalog-active').removeClass('catalog-active');
@@ -62,6 +61,8 @@ if ($catalog.length > 0) {
 } else {
 	$('#catalogs').scrollTop(0);
 }
+};
+
   </script>
 </body>
 </html>
