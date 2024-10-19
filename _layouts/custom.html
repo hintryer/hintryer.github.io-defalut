@@ -26,40 +26,45 @@
     <div id="page-right-aside"> 右</div>
   </div>
   <script>
-    $('h1,h2,h3,h4,h5,h6').each(function() {
-      const $this = $(this);
-      const headingLevel = this.tagName.toLowerCase();
-      const headingName = $this.text().trim();
-      const anchorName = $this.attr('id');
-      console.log(headingLevel, headingName);
-      // 创建标题目录项
-      $('#catalogs').append(`
+   // 创建目录项
+$('h1,h2,h3,h4,h5,h6').each(function() {
+    const $this = $(this);
+    const headingLevel = this.tagName.toLowerCase();
+    const headingName = $this.text().trim();
+    const anchorName = $this.attr('id');
+
+    $('#catalogs').append(`
         <div class="catalog catalog-${headingLevel}" id="${anchorName}">
             <a href="#${anchorName}">${headingName}</a>
         </div>
     `);
-    });
-    const catalogTrack = () => {
-      let $currentHeading = $('h1');
-      for (let heading of $('h1,h2,h3,h4,h5,h6')) {
+});
+
+// 滚动事件监听和标题追踪
+$(document).scroll(function() {
+    let $currentHeading = $('h1');
+    
+    for (let heading of ['h1','h2','h3','h4','h5','h6']) {
         const $heading = $(heading);
         if ($heading.offset().top - $(document).scrollTop() > 20) {
-          break;
+            break;
         }
         $currentHeading = $heading;
-      }
-    };
+    }
+
+    // 更新激活的目录项
     const anchorName = $currentHeading.attr('id');
-    const $catalog = $(`.catalog[name="${anchorName}"]`);
-    if (!$catalog.hasClass('catalog-active')) {
-      $('.catalog-active').removeClass('catalog-active');
-      $catalog.addClass('catalog-active');
-    }
+    const $catalog = $(`.catalog[id="${anchorName}"]`);
+
+    $('.catalog-active').removeClass('catalog-active');
+    
     if ($catalog.length > 0) {
-      $('#catalogs').scrollTop($catalog[0].offsetTop - 50);
+        $catalog.addClass('catalog-active');
+        $('#catalogs').scrollTop($catalog[0].offsetTop - 50);
     } else {
-      $('#catalogs').scrollTop(0);
+        $('#catalogs').scrollTop(0);
     }
+});
   </script>
 </body>
 </html>
