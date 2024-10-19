@@ -49,8 +49,10 @@ const catalogTrack = () => {
 		const $heading = $(heading);
 		if ($heading.offset().top - $(document).scrollTop() > 20) {
 			break;
+				console.log('offset...'); // 添加这行日志
 		}
 		$currentHeading = $heading;
+			console.log('$currentHeading...'); // 添加这行日志
 	}
 	const anchorName = $currentHeading.attr('id');
 const $catalog = $(`.catalog[name="${anchorName}"]`);
