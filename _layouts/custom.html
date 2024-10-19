@@ -62,7 +62,9 @@ if ($catalog.length > 0) {
 	$('#catalogs').scrollTop(0);
 }
 };
-
+// 在文档首次加载和滚动时调用目录追踪函数
+$(document).ready(catalogTrack);
+$(document).scroll(catalogTrack);
   </script>
 </body>
 </html>
