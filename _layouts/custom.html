@@ -42,6 +42,8 @@ $('h1,h2,h3,h4,h5,h6').each(function() {
 
 // 滚动事件监听和标题追踪
 const catalogTrack = () => {
+
+	console.log('Scrolling...'); // 添加这行日志
 	let $currentHeading = $('h1');
 	for (let heading of $('h1,h2,h3,h4,h5,h6')) {
 		const $heading = $(heading);
