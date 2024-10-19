@@ -10,14 +10,15 @@
    <link rel="stylesheet" type="text/css"  href="https://hintryer.github.io/style/copy.css"/>
    <script defer src="https://hintryer.github.io/style/copy.js"></script>
   <!--/Copy code-->
+	<script src="https://cdn.staticfile.net/jquery/2.2.4/jquery.min.js"></script>
   <title>
     {{ page.title }}
   </title>
 </head>
 <body>
-  <div id="catalogs"</div>
-    <div id="content"</div>
-  {{ content }}
+  <div id="catalogs"></div>
+    <div id="content">  {{ content }}</div>
+
       <script>
 $('h1,h2,h3,h4,h5,h6').each(function() {
     const $this = $(this);
