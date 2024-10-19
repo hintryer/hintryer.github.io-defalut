@@ -5,28 +5,25 @@
   <head>
     <base target="_blank">
   </head>
-  <link rel="stylesheet" type="text/css" href="https://hintryer.github.io/style/weilan.css">
+  <link rel="stylesheet" type="text/css" href="https://hintryer.github.io/style/style.css">
   <!--Copy code-延迟执行，直到整个页面都加载完成 -->
-  <link rel="stylesheet" type="text/css" href="https://hintryer.github.io/style/copy.css" />
   <script defer src="https://hintryer.github.io/style/copy.js"></script>
   <!--/Copy code-->
   <script src="https://cdn.staticfile.net/jquery/2.2.4/jquery.min.js"></script>
   <title>
-
     {{ page.title }}
   </title>
 </head>
 <body>
   <div id="page-body">
     <div id="page-left-aside">
-      <div id="catalogs">
         <div class="page-body-module-title">文章目录</div>
-      </div>
+      <div id="catalogs">   </div>
     </div>
     <div id="content">
       {{ content }}
     </div>
-    <div id="page-right-aside"> </div>
+    <div id="page-right-aside"> 右</div>
   </div>
   <script>
     $('h1,h2,h3,h4,h5,h6').each(function() {
