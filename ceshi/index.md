@@ -1,6 +1,7 @@
 ---
 layout: custom_layout
 title: Git总结
+showMiniToc: true
 ---
 
 ## 总结
