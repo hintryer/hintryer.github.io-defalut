@@ -7,55 +7,62 @@
   </head>
   <link rel="stylesheet" type="text/css" href="https://hintryer.github.io/style/weilan.css">
   <!--Copy code-延迟执行，直到整个页面都加载完成 -->
-   <link rel="stylesheet" type="text/css"  href="https://hintryer.github.io/style/copy.css"/>
-   <script defer src="https://hintryer.github.io/style/copy.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://hintryer.github.io/style/copy.css" />
+  <script defer src="https://hintryer.github.io/style/copy.js"></script>
   <!--/Copy code-->
-	<script src="https://cdn.staticfile.net/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.net/jquery/2.2.4/jquery.min.js"></script>
   <title>
+
     {{ page.title }}
   </title>
 </head>
 <body>
-  <div id="catalogs"></div>
-    <div id="content">  {{ content }}</div>
-
-      <script>
-$('h1,h2,h3,h4,h5,h6').each(function() {
-    const $this = $(this);
-    const headingLevel = this.tagName.toLowerCase();
-    const headingName = $this.text().trim();
-    const anchorName = $this.attr('id');
-
-    console.log(headingLevel, headingName);
-
-    // 创建标题目录项
-    $('#catalogs').append(`
+  <div id="page-body">
+    <div id="page-left-aside">
+      <div id="catalogs">
+        <div class="page-body-module-title">文章目录</div>
+      </div>
+    </div>
+    <div id="content">
+      {{ content }}
+    </div>
+    <div id="page-right-aside"> </div>
+  </div>
+  <script>
+    $('h1,h2,h3,h4,h5,h6').each(function() {
+      const $this = $(this);
+      const headingLevel = this.tagName.toLowerCase();
+      const headingName = $this.text().trim();
+      const anchorName = $this.attr('id');
+      console.log(headingLevel, headingName);
+      // 创建标题目录项
+      $('#catalogs').append(`
         <div class="catalog catalog-${headingLevel}" id="${anchorName}">
             <a href="#${anchorName}">${headingName}</a>
         </div>
     `);
-});
-const catalogTrack = () => {
-	let $currentHeading = $('h1');
-	for (let heading of $('h1,h2,h3,h4,h5,h6')) {
-		const $heading = $(heading);
-		if ($heading.offset().top - $(document).scrollTop() > 20) {
-			break;
-		}
-		$currentHeading = $heading;
-	}
-};
-const anchorName = $currentHeading.attr('id');
-const $catalog = $(`.catalog[name="${anchorName}"]`);
-if (!$catalog.hasClass('catalog-active')) {
-	$('.catalog-active').removeClass('catalog-active');
-	$catalog.addClass('catalog-active');
-}
-if ($catalog.length > 0) {
-	$('#catalogs').scrollTop($catalog[0].offsetTop - 50);
-} else {
-	$('#catalogs').scrollTop(0);
-}
-</script>
+    });
+    const catalogTrack = () => {
+      let $currentHeading = $('h1');
+      for (let heading of $('h1,h2,h3,h4,h5,h6')) {
+        const $heading = $(heading);
+        if ($heading.offset().top - $(document).scrollTop() > 20) {
+          break;
+        }
+        $currentHeading = $heading;
+      }
+    };
+    const anchorName = $currentHeading.attr('id');
+    const $catalog = $(`.catalog[name="${anchorName}"]`);
+    if (!$catalog.hasClass('catalog-active')) {
+      $('.catalog-active').removeClass('catalog-active');
+      $catalog.addClass('catalog-active');
+    }
+    if ($catalog.length > 0) {
+      $('#catalogs').scrollTop($catalog[0].offsetTop - 50);
+    } else {
+      $('#catalogs').scrollTop(0);
+    }
+  </script>
 </body>
 </html>
