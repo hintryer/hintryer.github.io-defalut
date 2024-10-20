@@ -26,6 +26,7 @@
     <div id="page-right-aside"> 右</div>
   </div>
   <script>
+
    // 创建目录项
 $('h1,h2,h3,h4,h5,h6').each(function() {
     const $this = $(this);
@@ -43,16 +44,15 @@ $('h1,h2,h3,h4,h5,h6').each(function() {
 // 滚动事件监听和标题追踪
 const catalogTrack = () => {
 
-	console.log('Scrolling...'); // 添加这行日志
 	let $currentHeading = $('h1');
-	for (let heading of $('h1,h2,h3,h4,h5,h6')) {
+$('h1,h2,h3,h4,h5,h6').each(function() {
 		const $heading = $(heading);
 		if ($heading.offset().top - $(document).scrollTop() > 20) {
+							console.log('offset...'); // 添加这行日志
 			break;
-				console.log('offset...'); // 添加这行日志
+
 		}
 		$currentHeading = $heading;
-			console.log('$currentHeading...'); // 添加这行日志
 	}
 	const anchorName = $currentHeading.attr('id');
 const $catalog = $(`.catalog[name="${anchorName}"]`);
@@ -69,6 +69,7 @@ if ($catalog.length > 0) {
 // 在文档首次加载和滚动时调用目录追踪函数
 $(document).ready(catalogTrack);
 $(document).scroll(catalogTrack);
+  
   </script>
 </body>
 </html>
