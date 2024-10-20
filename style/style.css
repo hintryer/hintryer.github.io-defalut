@@ -30,16 +30,18 @@ body{
 }
 
 #content {
-	display: flex;
-	flex-direction: column;
-	max-width: 62.5rem;
+    position: relative;
+	
 }
 
 #catalogs {
 	position: sticky;
 	box-sizing: border-box;
 }
-
+.page-body-module-content {
+    position: fixed;
+    width: 11rem;
+}
 .catalog:not(.catalog-h1) {
 	padding: 0.125rem 0;
 	font-size: 0.95rem;
