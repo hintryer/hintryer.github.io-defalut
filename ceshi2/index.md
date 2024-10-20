@@ -1,5 +1,5 @@
 ---
-layout: custom
+layout: custom2
 title: Git总结
 showMiniToc: true
 ---
