@@ -38,7 +38,7 @@ for (let heading of $('h1,h2,h3,h4,h5,h6')) {
 	console.log(headingLevel, headingName);
 	//点击目录跳转到对应章节
   const anchorName = $heading.attr('id');
-  $('#catalogs').append(
+  $('#catalogs .page-body-module-content').append(
       `
       <div class="catalog catalog-${headingLevel}" name="${anchorName}">
           <a href="#${anchorName}">${headingName}</a>
